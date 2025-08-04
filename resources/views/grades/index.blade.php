@@ -94,7 +94,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
-                        {{ trans('Grades_trans.add_Grade') }}
+                        اضافة مرحلة
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -122,7 +122,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
                     <button type="submit" class="btn btn-success">اضافة</button>
                 </div>
                 </form>
@@ -131,19 +131,9 @@
         </div>
     </div>
     @foreach ($grades as $grade)
-        <tr>
-            <td>{{ ++$id }}</td>
-            <td>{{ $grade->name }}</td>
-            <td>{{ $grade->notes }}</td>
-            <td>
-                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                    data-target="#edit{{ $grade->id }}" title="تعديل"><i class="fa fa-edit"></i></button>
-                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                    data-target="#delete{{ $grade->id }}" title="حذف"><i class="fa fa-trash"></i></button>
-            </td>
-        </tr>
 
-        <!-- ✅ مودال التعديل -->
+
+        <!-- edit-->
         <div class="modal fade" id="edit{{ $grade->id }}" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -152,7 +142,7 @@
                         @csrf
                         @method('PATCH')
                         <div class="modal-header">
-                            <h5 class="modal-title">{{ trans('Grades_trans.edit_Grade') }}</h5>
+                            <h5 class="modal-title">تعديل المرحلة</h5>
                             <button type="button" class="close" data-dismiss="modal">
                                 <span>&times;</span>
                             </button>
@@ -165,16 +155,16 @@
                         </div>
                         <div class="modal-footer">
                             <button type="submit"
-                                class="btn btn-success">{{ trans('Grades_trans.submit') }}</button>
+                                class="btn btn-success">تعديل</button>
                             <button type="button" class="btn btn-secondary"
-                                data-dismiss="modal">{{ trans('Grades_trans.Close') }}</button>
+                                data-dismiss="modal">الغاء</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
 
-        <!-- ✅ مودال الحذف -->
+        <!-- delete -->
         <div class="modal fade" id="delete{{ $grade->id }}" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -183,19 +173,19 @@
                         @csrf
                         @method('DELETE')
                         <div class="modal-header">
-                            <h5 class="modal-title">{{ trans('Grades_trans.delete_Grade') }}</h5>
+                            <h5 class="modal-title">حذف المرحلة</h5>
                             <button type="button" class="close" data-dismiss="modal">
                                 <span>&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <p>{{ trans('Grades_trans.Warning_Grade') }}</p>
+                            <p> {{$grade->name}} :سيتم حذف المرحلة</p>  
                             <input type="hidden" name="id" value="{{ $grade->id }}">
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-danger">{{ trans('Grades_trans.submit') }}</button>
+                            <button type="submit" class="btn btn-danger">حذف</button>
                             <button type="button" class="btn btn-secondary"
-                                data-dismiss="modal">{{ trans('Grades_trans.Close') }}</button>
+                                data-dismiss="modal">الغاء</button>
                         </div>
                     </form>
                 </div>

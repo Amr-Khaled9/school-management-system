@@ -14,22 +14,3 @@ Route::resource('grade', GradeController::class);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Route::get('/', function () {
-    return view('dashboard');
-});

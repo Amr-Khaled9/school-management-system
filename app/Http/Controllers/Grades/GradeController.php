@@ -6,6 +6,8 @@ use App\Models\Grade;
 use Illuminate\Http\Request;
 use App\Http\Requests\GradeRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateRequest;
+use function Flasher\Toastr\Prime\toastr;
 
 
 class GradeController extends Controller
@@ -46,6 +48,9 @@ class GradeController extends Controller
     // show massege successful
     toastr()->success('تم اضافة المرحلة');  // بكدج جديده اسمها Toastr
     return back();
+
+
+    
   }
 
   /**
@@ -70,7 +75,19 @@ class GradeController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function update($id) {}
+  public function update($id , UpdateRequest $request) {
+    // get user by id
+    $grade =Grade::findOrFail($id);
+    // Validation 
+    //update data 
+    $grade->update([
+      'name'=>$request->name,
+      'notes' => $request->notes
+    ]);
+    toastr()->success('تم تعديل المرحلة بنجاح');
+    return back();
+  
+  }
 
   /**
    * Remove the specified resource from storage.
@@ -78,5 +95,12 @@ class GradeController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function destroy($id) {}
+  public function destroy($id) {
+      $grade =Grade::findOrFail($id);
+    $grade->delete();
+    toastr()->error('تم حذف المرحلة الدراسية');
+        return back();
+
+
+  }
 }
