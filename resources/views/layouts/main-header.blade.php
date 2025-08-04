@@ -28,7 +28,7 @@
             </ul>
             <!-- top bar right -->
             <ul class="nav navbar-nav ml-auto">
-                <ul>
+                {{-- <ul>
                     @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                         <li>
                             <a rel="alternate" hreflang="{{ $localeCode }}"
@@ -37,7 +37,7 @@
                             </a>
                         </li>
                     @endforeach
-                </ul>
+                </ul> --}}
                 <li class="nav-item fullscreen">
                     <a id="btnFullscreen" href="#" class="nav-link"><i class="ti-fullscreen"></i></a>
                 </li>
