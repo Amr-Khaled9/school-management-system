@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Classrooms;
 
+use App\Models\Grade;
+use App\Models\Classroom;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Classroom;
+use App\Http\Requests\StoreClassroom;
 
 class ClassroomController extends Controller 
 {
@@ -17,7 +19,8 @@ class ClassroomController extends Controller
   public function index()
   {
     $classrooms = Classroom::all();
-    return view('classrooms.index', compact('classrooms'));
+    $grades =Grade::all();
+    return view('classrooms.index', compact('classrooms','grades'));
   }
 
   /**
@@ -35,9 +38,23 @@ class ClassroomController extends Controller
    *
    * @return Response
    */
-  public function store(Request $request)
+  public function store(StoreClassroom $request)
   {
-    
+    //validation ->>>>>>>>>>>>>>>>>>>في لقطه جديده بسبب وجود الداتا داخل array
+    //store db and massage ->>>>>>>>>>>>>>>>>>>>>>> فيها برضو حته جديده عشان الداتا جيبه في شكل array
+
+    $list_classes = $request->List_Classes;
+    // dd($list_classes[0]);
+    foreach ($list_classes as  $value) {
+      $class = new Classroom;
+      $class->name = $value['name'];
+      $class->grade_id=$value['grade_id'];
+      $class->save();
+    }
+
+        toastr()->success('تم تعديل الصف بنجاح');
+
+      return back();
   }
 
   /**
