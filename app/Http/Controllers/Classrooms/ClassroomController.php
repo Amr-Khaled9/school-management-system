@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers\Classrooms;
 
@@ -7,8 +7,9 @@ use App\Models\Classroom;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreClassroom;
+use App\Http\Requests\UpdateClassroomRequest;
 
-class ClassroomController extends Controller 
+class ClassroomController extends Controller
 {
 
   /**
@@ -19,8 +20,8 @@ class ClassroomController extends Controller
   public function index()
   {
     $classrooms = Classroom::all();
-    $grades =Grade::all();
-    return view('classrooms.index', compact('classrooms','grades'));
+    $grades = Grade::all();
+    return view('classrooms.index', compact('classrooms', 'grades'));
   }
 
   /**
@@ -28,10 +29,7 @@ class ClassroomController extends Controller
    *
    * @return Response
    */
-  public function create()
-  {
-    
-  }
+  public function create() {}
 
   /**
    * Store a newly created resource in storage.
@@ -48,13 +46,13 @@ class ClassroomController extends Controller
     foreach ($list_classes as  $value) {
       $class = new Classroom;
       $class->name = $value['name'];
-      $class->grade_id=$value['grade_id'];
+      $class->grade_id = $value['grade_id'];
       $class->save();
     }
 
-        toastr()->success('تم تعديل الصف بنجاح');
+    toastr()->success('تم اضافة الصف بنجاح');
 
-      return back();
+    return back();
   }
 
   /**
@@ -63,10 +61,7 @@ class ClassroomController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function show($id)
-  {
-    
-  }
+  public function show($id) {}
 
   /**
    * Show the form for editing the specified resource.
@@ -74,10 +69,7 @@ class ClassroomController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function edit($id)
-  {
-    
-  }
+  public function edit($id) {}
 
   /**
    * Update the specified resource in storage.
@@ -85,9 +77,17 @@ class ClassroomController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
+  public function update(UpdateClassroomRequest $request, $id)
   {
-    
+    // dd($request->all());
+    //Validation 
+    // update in db
+    $classroom = Classroom::findOrFail($request->id);
+    $classroom->name = $request->name;
+    $classroom->grade_id = $request->grade_id;
+    $classroom->save();
+    toastr()->success('تم تعديل الصف بنجاح');
+    return back();
   }
 
   /**
@@ -96,11 +96,14 @@ class ClassroomController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function destroy($id)
+  public function destroy(Request $request, $id)
   {
-    
+    // dd($request->id);
+    // $request->validate([
+    //   'id' => 'required|exists:classrooms,id'
+    // ]);
+    Classroom::findOrFail($request->id)->delete();
+    toastr()->error('تم حذف الصف بنجاح');
+    return back();
   }
-  
 }
-
-?>

@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends FormRequest
+class UpdateClassroomRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,20 +22,21 @@ class UpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'name' => [
-                'required',
-                Rule::unique('grades', 'name')->ignore($this->route('grade')), //  اسم الباراميتر هو "grade"
-            ],
-            'notes' => 'nullable',
-        ];
+        // dd($this->route('classroom'));
+    return [
+        'name' => [
+            'required',
+            Rule::unique('classrooms', 'name')->ignore($this->route('classroom')), // تجاهل الصف الحالي
+        ],
+        'grade_id' => 'required|exists:grades,id',
+    ];
     }
 
     public function messages(): array
     {
         return [
-            'name.required' => 'الرجاء إدخال اسم المرحلة.',
-            'name.unique' => 'اسم المرحلة موجود بالفعل.',
+            'name.required' => 'الرجاء إدخال اسم الصف.',
+            'name.unique' => 'اسم الصف موجود بالفعل.',
         ];
     }
 }

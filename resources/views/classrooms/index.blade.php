@@ -60,10 +60,10 @@
                                     <td>{{ $classroom->Grades->name }}</td>
                                     <td>
                                         <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                            data-target="#edit{{ $classroom->id }}" title="تعديل"><i
+                                            data-target="#edit{{ $classroom->id }}" title="تعديل الصف"><i
                                                 class="fa fa-edit"></i></button>
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                            data-target="#delete{{ $classroom->id }}" title="حذف"><i
+                                            data-target="#delete{{ $classroom->id }}" title="حذف الصف"><i
                                                 class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
@@ -78,89 +78,205 @@
                             </tr>
                         </tfoot>
                     </table>
-                </div> 
+                </div>
 
             </div>
         </div>
     </div>
 
-    <!-- add_modal_class -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
-                        اضافة صف
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+
+    @foreach ($classrooms as $classroom)
+        <!-- edit_modal_Grade -->
+        <div class="modal fade" id="edit{{ $classroom->id }}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
+                            تعديل الصف
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- add_form -->
+                        <form action="{{ route('classroom.update', $classroom->id) }}" method="post">
+                            {{ method_field('patch') }}
+                            @csrf
+                            <div class="row">
+                                <div class="col">
+                                    <label for="Name" class="mr-sm-2">اسم الصف
+                                        :</label>
+                                    <input id="Name" type="text" name="name" class="form-control"
+                                        value="{{ $classroom->name }}" required>
+                                    <input id="id" type="hidden" name="id" class="form-control"
+                                        value="{{ $classroom->id }}">
+                                </div>
+                            </div>
+                    </div><br>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1"> اسم المرحلة
+                            : </label>
+                        <select class="form-control form-control-lg" id="exampleFormControlSelect1" name="grade_id">
+                            <option value="{{ $classroom->grades->id }}">
+                                {{ $classroom->grades->name }}
+                            </option>
+                            @foreach ($grades as $grade)
+                                <option value="{{ $grade->id }}">
+                                    {{ $grade->name }}
+                                </option>
+                            @endforeach
+                        </select>
+
+                    </div>
+                    <br><br>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-success">تعديل</button>
+                    </div>
+                    </form>
+
                 </div>
-                <div class="modal-body">
+            </div>
+        </div>
+</div>
 
-                    <form class=" row mb-30" action="{{ route('classroom.store') }}" method="POST">
-                        @csrf
-                        <div class="card-body">
-                            <div class="repeater">
-                                <div data-repeater-list="List_Classes">
-                                    <div data-repeater-item>
-                                        <div class="row">
+<!-- delete_modal_Grade -->
+<div class="modal fade" id="delete{{ $classroom->id }}" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
+                    حذف الصف
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('classroom.destroy', 'test') }}" method="post">
+                    {{ method_field('Delete') }}
+                    @csrf
+                     حذف الصف : {{ $classroom->name }}
 
-                                            <div class="col">
-                                                <label for="Name" class="mr-sm-2">اسم الصف
-                                                    :</label>
-                                                <input class="form-control" type="text" name="name" />
+                    <input id="id" type="hidden" name="id" class="form-control"
+                        value="{{ $classroom->id }}">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-danger">حذف</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
+</table>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- add_modal_class -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
+                    اضافة صف
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form class=" row mb-30" action="{{ route('classroom.store') }}" method="POST">
+                    @csrf
+                    <div class="card-body">
+                        <div class="repeater">
+                            <div data-repeater-list="List_Classes">
+                                <div data-repeater-item>
+                                    <div class="row">
+
+                                        <div class="col">
+                                            <label for="Name" class="mr-sm-2">اسم الصف
+                                                :</label>
+                                            <input class="form-control" type="text" name="name" />
+                                        </div>
+
+                                        <div class="col">
+                                            <label for="Name_en" class="mr-sm-2">اسم المرحلة
+                                                :</label>
+
+                                            <div class="box">
+                                                <select class="fancyselect" name="grade_id">
+                                                    @foreach ($grades as $grade)
+                                                        <option value="{{ $grade->id }}">{{ $grade->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
                                             </div>
 
-                                            <div class="col">
-                                                <label for="Name_en" class="mr-sm-2">اسم المرحلة
-                                                    :</label>
+                                        </div>
 
-                                                <div class="box">
-                                                    <select class="fancyselect" name="grade_id">
-                                                        @foreach ($grades as $grade)
-                                                            <option value="{{ $grade->id }}">{{ $grade->name }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="col">
-                                                <label for="Name_en" class="mr-sm-2">العمليات
-                                                    :</label>
-                                                <input class="btn btn-danger btn-block" data-repeater-delete
-                                                    type="button" value="حذف" />
-                                            </div>
+                                        <div class="col">
+                                            <label for="Name_en" class="mr-sm-2">العمليات
+                                                :</label>
+                                            <input class="btn btn-danger btn-block" data-repeater-delete
+                                                type="button" value="حذف" />
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mt-20">
-                                    <div class="col-12">
-                                        <input class="button" data-repeater-create type="button" value="اضافة صف" />
-                                    </div>
-
+                            </div>
+                            <div class="row mt-20">
+                                <div class="col-12">
+                                    <input class="button" data-repeater-create type="button" value="اضافة صف" />
                                 </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
-                                    <button type="submit" class="btn btn-success">حفظ</button>
-                                </div>
-
 
                             </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
+                                <button type="submit" class="btn btn-success">حفظ</button>
+                            </div>
+
+
                         </div>
-                    </form>
-                </div>
-
-
+                    </div>
+                </form>
             </div>
+
 
         </div>
 
     </div>
+
+</div>
 </div>
 </div>
 </div>
