@@ -106,4 +106,20 @@ class ClassroomController extends Controller
     toastr()->error('تم حذف الصف بنجاح');
     return back();
   }
+  public function delete_all(Request $request)
+  {
+
+    $delete_all_id = explode(',', $request->delete_all_id);  // بترجع في شكل  Associative Array
+    // dd($delete_all_id);
+    Classroom::whereIn('id', $delete_all_id)->delete();
+    toastr()->error('تم حذف الصفوف بنجاح');
+    return back();
+  }
+
+  public function filter_class(Request $request)  {
+    $id =$request->grade_id;
+    $classrooms =Classroom::where('grade_id',$id)->get();
+        $grades = Grade::all();
+    return view('classrooms.index', compact('classrooms', 'grades'));
+  }
 }

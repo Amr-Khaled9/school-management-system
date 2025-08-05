@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\GradeRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateRequest;
+use App\Models\Classroom;
+
 use function Flasher\Toastr\Prime\toastr;
 
 
@@ -48,9 +50,6 @@ class GradeController extends Controller
     // show massege successful
     toastr()->success('تم اضافة المرحلة');  // بكدج جديده اسمها Toastr
     return back();
-
-
-    
   }
 
   /**
@@ -75,18 +74,18 @@ class GradeController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function update($id , UpdateRequest $request) {
+  public function update($id, UpdateRequest $request)
+  {
     // get user by id
-    $grade =Grade::findOrFail($id);
+    $grade = Grade::findOrFail($id);
     // Validation 
     //update data 
     $grade->update([
-      'name'=>$request->name,
+      'name' => $request->name,
       'notes' => $request->notes
     ]);
     toastr()->success('تم تعديل المرحلة بنجاح');
     return back();
-  
   }
 
   /**
@@ -95,12 +94,21 @@ class GradeController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function destroy($id) {
-      $grade =Grade::findOrFail($id);
-    $grade->delete();
-    toastr()->error('تم حذف المرحلة الدراسية');
-        return back();
-
-
+  public function destroy($id)
+  {
+    // هجيب كل في جدول الصفوف ليهم نفس الي دي في جدول المراحل
+    
+  $classroom = Classroom::where('grade_id', $id)->pluck('grade_id');  // جديده لو ليه ف الجدول بتاع الفصول مش هيحذفهم
+    if ($classroom->count() == 0) {
+      // لو طلع 0 كمل عادي 
+      $grade = Grade::findOrFail($id);
+      $grade->delete();
+      toastr()->error('تم حذف المرحلة الدراسية');
+      return back();
+    } else {
+      // لو طلع فيه يظهر الرسالة
+      toastr()->error('لا يمكنك حذف المرحلة , يجب حذف الصفوف المتعلقة بها اولا');
+      return back();
+    }
   }
 }
