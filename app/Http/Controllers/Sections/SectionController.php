@@ -1,0 +1,104 @@
+<?php
+
+namespace App\Http\Controllers\Sections;
+
+use App\Models\Grade;
+use App\Models\Section;
+use App\Models\Classroom;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreSectionRequest;
+use App\Http\Requests\UpdateSectionRequest;
+
+class SectionController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $grades = Grade::with(['Sections'])->get();
+        $list_grades = Grade::all();
+        return view('sections.index', compact('grades', 'list_grades'));
+    }
+
+
+    public function getclass($id)
+    {
+        $list_classes = Classroom::where("grade_id", $id)->pluck("name", "id");
+        return $list_classes;
+    }
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(StoreSectionRequest $request)
+    {
+        // validation
+        // insert DB 
+        $section = new Section;
+        $section->name = $request->name;
+        $section->status = 1;
+        $section->grade_id = $request->grade_id;
+        $section->classroom_id = $request->classroom_id;
+        $section->save();
+        // return massage
+        toastr()->success('تم اضافة القسم بنجاح');
+        return back();
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Section $section)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Section $section)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(UpdateSectionRequest $request, $id)
+    {
+            // dd($request->all());
+    //Validation 
+    // update in db
+    $section = Section::findOrFail($id);
+    $section->name = $request->name;
+    $section->grade_id = $request->grade_id;
+    $section->classroom_id = $request->classroom_id;
+    if($request->status == 'on'){
+        $section->status = 1;
+    }else{
+        $section->status = 0;
+    }
+    $section->save();
+    toastr()->success('تم تعديل القسم بنجاح');
+    return back();
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Request $request)
+    {
+        Section::findOrFail($request->id)->delete();
+        toastr()->error('تم حذف القسم بنجاح');
+        return back();
+    }
+}

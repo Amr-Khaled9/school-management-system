@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Section;
 use Illuminate\Database\Eloquent\Model;
 
 class Grade extends Model 
@@ -14,7 +15,9 @@ class Grade extends Model
         'name',
         'notes'
     ];
-
+    public function Sections(){
+        return $this->hasMany(Section::class,'grade_id');
+    }
 
 
 }
