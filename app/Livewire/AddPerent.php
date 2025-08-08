@@ -2,15 +2,18 @@
 
 namespace App\Livewire;
 
+use App\Models\PerentAttachment;
 use Livewire\Component;
 use App\Models\MyPerent;
 use App\Models\Religion;
 use App\Models\Type_Blood;
 use App\Models\Nationalitie;
+use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Hash;
 
 class AddPerent extends Component
 {
+     use WithFileUploads;
     public $Email,$successMessage='';
     public  $Password,
         $Name_Father,
@@ -24,7 +27,7 @@ class AddPerent extends Component
         $National_ID_Mother, $Passport_ID_Mother,
         $Phone_Mother, $Job_Mother,
         $Nationality_Mother_id, $Blood_Type_Mother_id,
-        $Address_Mother, $Religion_Mother_id;
+        $Address_Mother, $Religion_Mother_id ,$Parent_id,$photos;
 
 
     public function rules()
@@ -142,9 +145,23 @@ class AddPerent extends Component
         $My_Parent->address_mother = $this->Address_Mother;
 
         $My_Parent->save();
-               toastr()->success( 'تم حفظ البيانات بنجاح');
 
-        // تفريغ الحقول لو حبيت (اختياري)
+        if(!empty($this->photos)){
+            foreach ($this->photos as $photo) {
+                 $photo->storeAs($this->National_ID_Father,$photo->getClientOriginalName(),$disk ='parent_attachments');
+
+                 PerentAttachment::created([
+                    'file_name' => $photo->getClientOriginalName(),
+                    'perent_id'=> MyPerent::latest()->first()->id
+
+                 ]);
+            }
+        }
+
+
+        toastr()->success( 'تم حفظ البيانات بنجاح');
+
+        
  
         $this->reset();
     }

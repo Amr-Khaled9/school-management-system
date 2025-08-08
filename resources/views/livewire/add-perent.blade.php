@@ -233,8 +233,16 @@
         </div>
 
         {{-- تأكيد --}}
+        <div class="col-md-12"><br>
+            <label style="color: red">ادخل المرفقات (اختياري)</label>
+            <div class="form-group">
+                <input type="file" wire:model="photos" accept="image/*" multiple>
+            </div>
+            <br>
 
-            <button type="submit" class="btn btn-success btn-lg">إضافة</button>
+            <input type="hidden" wire:model="Parent_id">
+        </div>
+        <button type="submit" class="btn btn-success btn-lg">إضافة</button>
     </form>
 </div>
 </div>
