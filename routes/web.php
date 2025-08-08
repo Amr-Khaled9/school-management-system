@@ -20,3 +20,8 @@ Route::post('filter-class',[ClassroomController::class,'filter_class'])->name('f
 
 Route::resource('section', SectionController::class);
 Route::get('classes/{id}', [SectionController::class,'getclass']);
+
+
+Route::view('show_perent','livewire.show-perent');
+Route::view('add_perent','livewire.show_add_perent');
+Route::view('table_perent', 'livewire.table_perent');

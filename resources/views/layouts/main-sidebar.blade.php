@@ -21,7 +21,7 @@
                         </ul>
                     </li>
                     <!-- menu title -->
-                    <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">##</li>
+                    <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">القائمة</li>
                     <!-- menu item Elements-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#elements">
@@ -46,18 +46,6 @@
                             <li> <a href="{{ route('classroom.index') }}">الفصول الدراسية</a> </li>
                         </ul>
                     </li>
-                    <!-- menu item todo-->
-
-                    <!-- menu item chat-->
-                    <li>
-                        <a href="chat-page.html"><i class="ti-comments"></i><span class="right-nav-text">Chat
-                            </span></a>
-                    </li>
-                    <!-- menu item mailbox-->
-                    <li>
-                        <a href="mail-box.html"><i class="ti-email"></i><span class="right-nav-text">Mail
-                                box</span> <span class="badge badge-pill badge-warning float-right mt-1">HOT</span> </a>
-                    </li>
                     <!-- menu item Charts-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart">
@@ -74,15 +62,13 @@
                     <!-- menu font icon-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#font-icon">
-                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">font
-                                    icon</span></div>
+                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">اولياء الامور</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="font-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
+                            <li> <a href="{{url('table_perent')}}">قائمة اولياء الامور</a> </li>
+                            <li> <a href="{{url('add_perent')}}">اضافة ولي امر</a> </li>
                         </ul>
                     </li>
                     <!-- menu title -->
