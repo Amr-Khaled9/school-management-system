@@ -2,7 +2,7 @@
 @section('css')
 <link href="{{ URL::asset('css/wizard.css') }}" rel="stylesheet" id="bootstrap-css">
 @section('title')
-    اضافة ولي الامر
+    اولياء الامور
 @stop
 @endsection
 @section('page-header')
@@ -11,7 +11,7 @@
 <div class="page-title">
     <div class="row">
         <div class="col-sm-6">
-            <h4 class="mb-0"> اضافة ولي الامر</h4>
+            <h4 class="mb-0"> اولياء الامور</h4>
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">

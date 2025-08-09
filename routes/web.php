@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Grades\GradeController;
 use App\Http\Controllers\Sections\SectionController;
@@ -14,6 +15,7 @@ Route::get('/', function () {
 });
 Route::resource('grade', GradeController::class);
 Route::resource('classroom', ClassroomController::class);
+Route::resource('teacher', TeacherController::class);
 
 Route::post('delete-all',[ClassroomController::class,'delete_all'])->name('delete_all');
 Route::post('filter-class',[ClassroomController::class,'filter_class'])->name('filter_class');
@@ -22,6 +24,5 @@ Route::resource('section', SectionController::class);
 Route::get('classes/{id}', [SectionController::class,'getclass']);
 
 
-Route::view('show_perent','livewire.show-perent');
 Route::view('add_perent','livewire.show_add_perent');
 Route::view('table_perent', 'livewire.table_perent');
