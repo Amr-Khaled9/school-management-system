@@ -9,6 +9,6 @@ class Teacher extends Model
     protected $guarded =[];
 
     public function Specialization(){
-        $this->belongsTo(Specialization::class,'specialization_id');
+        return $this->belongsTo(Specialization::class,'specialization_id');
     }
 }
