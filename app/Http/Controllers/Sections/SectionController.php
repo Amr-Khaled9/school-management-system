@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSectionRequest;
 use App\Http\Requests\UpdateSectionRequest;
+use App\Models\Teacher;
 
 class SectionController extends Controller
 {
@@ -19,7 +20,8 @@ class SectionController extends Controller
     {
         $grades = Grade::with(['Sections'])->get();
         $list_grades = Grade::all();
-        return view('sections.index', compact('grades', 'list_grades'));
+        $teachers = Teacher::all();
+        return view('sections.index', compact('grades', 'list_grades', 'teachers'));
     }
 
 
@@ -41,6 +43,7 @@ class SectionController extends Controller
      */
     public function store(StoreSectionRequest $request)
     {
+        // dd($request->all());
         // validation
         // insert DB 
         $section = new Section;
@@ -49,6 +52,8 @@ class SectionController extends Controller
         $section->grade_id = $request->grade_id;
         $section->classroom_id = $request->classroom_id;
         $section->save();
+        // relation many to many 
+        $section->teachers()->attach($request->teacher_id);
         // return massage
         toastr()->success('تم اضافة القسم بنجاح');
         return back();
@@ -75,21 +80,21 @@ class SectionController extends Controller
      */
     public function update(UpdateSectionRequest $request, $id)
     {
-            // dd($request->all());
-    //Validation 
-    // update in db
-    $section = Section::findOrFail($id);
-    $section->name = $request->name;
-    $section->grade_id = $request->grade_id;
-    $section->classroom_id = $request->classroom_id;
-    if($request->status == 'on'){
-        $section->status = 1;
-    }else{
-        $section->status = 0;
-    }
-    $section->save();
-    toastr()->success('تم تعديل القسم بنجاح');
-    return back();
+        // dd($request->all());
+        //Validation 
+        // update in db
+        $section = Section::findOrFail($id);
+        $section->name = $request->name;
+        $section->grade_id = $request->grade_id;
+        $section->classroom_id = $request->classroom_id;
+        if ($request->status == 'on') {
+            $section->status = 1;
+        } else {
+            $section->status = 0;
+        }
+        $section->save();
+        toastr()->success('تم تعديل القسم بنجاح');
+        return back();
     }
 
     /**

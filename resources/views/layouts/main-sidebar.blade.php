@@ -36,6 +36,18 @@
                     </li>
                     <!-- menu item calendar-->
                     <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart">
+                            <div class="pull-left"><i class="ti-pie-chart"></i><span
+                                    class="right-nav-text">الاقسام</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="chart" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('section.index') }}">الاقسام الدراسة</a> </li>
+                        </ul>
+                    </li>
+
+                    <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#calendar-menu">
                             <div class="pull-left"><i class="ti-calendar"></i><span class="right-nav-text">الفصول</span>
                             </div>
@@ -46,46 +58,35 @@
                             <li> <a href="{{ route('classroom.index') }}">الفصول الدراسية</a> </li>
                         </ul>
                     </li>
-                    <!-- menu item Charts-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart">
-                            <div class="pull-left"><i class="ti-pie-chart"></i><span
-                                    class="right-nav-text">الاقسام</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="chart" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{route('section.index')}}">الاقسام الدراسة</a> </li>
-                        </ul>
-                    </li>
 
                     <!-- menu font icon-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#font-icon">
-                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">اولياء الامور</span></div>
+                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">اولياء
+                                    الامور</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="font-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{url('add_perent')}}">قائمة اولياء الامور</a> </li>
+                            <li> <a href="{{ url('add_perent') }}">قائمة اولياء الامور</a> </li>
                         </ul>
                     </li>
                     <!-- menu item Form-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Form">
-                            <div class="pull-left"><i class="ti-files"></i><span class="right-nav-text">المعلمين</span></div>
+                            <div class="pull-left"><i class="ti-files"></i><span class="right-nav-text">المعلمين</span>
+                            </div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Form" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{route('teacher.index')}}">قائمة المعلمين</a> </li>
+                            <li> <a href="{{ route('teacher.index') }}">قائمة المعلمين</a> </li>
                         </ul>
                     </li>
                     <!-- menu item table -->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#table">
-                            <div class="pull-left"><i class="ti-layout-tab-window"></i><span
-                                    class="right-nav-text">data
+                            <div class="pull-left"><i class="ti-layout-tab-window"></i><span class="right-nav-text">data
                                     table</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>

@@ -9,6 +9,7 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\BloodTableSeeder;
 use Database\Seeders\ReligionTableSeeder;
 use Database\Seeders\NationalitieTableSeeder;
+use Database\Seeders\SpecializationTableSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,5 +27,6 @@ class DatabaseSeeder extends Seeder
         $this->call(BloodTableSeeder::class);
         $this->call(NationalitieTableSeeder::class);
         $this->call(ReligionTableSeeder::class);
+        $this->call(SpecializationTableSeeder::class);
     }
 }

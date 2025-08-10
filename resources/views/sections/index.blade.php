@@ -77,8 +77,8 @@
                                                                                 <label
                                                                                     class="badge badge-success">مفعل</label>
                                                                             @else
-                                                                                <label
-                                                                                    class="badge badge-danger">غير مفعل</label>
+                                                                                <label class="badge badge-danger">غير
+                                                                                    مفعل</label>
                                                                             @endif
 
                                                                         </td>
@@ -97,8 +97,7 @@
 
 
                                                                     <!--تعديل قسم جديد -->
-                                                                    <div class="modal fade"
-                                                                        id="edit{{ $sections->id }}"
+                                                                    <div class="modal fade" id="edit{{ $sections->id }}"
                                                                         tabindex="-1" role="dialog"
                                                                         aria-labelledby="exampleModalLabel"
                                                                         aria-hidden="true">
@@ -108,7 +107,7 @@
                                                                                     <h5 class="modal-title"
                                                                                         style="font-family: 'Cairo', sans-serif;"
                                                                                         id="exampleModalLabel">
-                                                                                        تعديل القسم 
+                                                                                        تعديل القسم
                                                                                     </h5>
                                                                                     <button type="button"
                                                                                         class="close"
@@ -140,7 +139,8 @@
 
                                                                                         <div class="col">
                                                                                             <label for="inputName"
-                                                                                                class="control-label">اسم المرحلة</label>
+                                                                                                class="control-label">اسم
+                                                                                                المرحلة</label>
                                                                                             <select name="grade_id"
                                                                                                 class="custom-select"
                                                                                                 onclick="console.log($(this).val())">
@@ -161,7 +161,8 @@
 
                                                                                         <div class="col">
                                                                                             <label for="inputName"
-                                                                                                class="control-label">اسم الصف</label>
+                                                                                                class="control-label">اسم
+                                                                                                الصف</label>
                                                                                             <select name="classroom_id"
                                                                                                 class="custom-select">
                                                                                                 <option
@@ -212,8 +213,8 @@
 
                                                                     <!-- delete_modal_Grade -->
                                                                     <div class="modal fade"
-                                                                        id="delete{{ $sections->id }}"
-                                                                        tabindex="-1" role="dialog"
+                                                                        id="delete{{ $sections->id }}" tabindex="-1"
+                                                                        role="dialog"
                                                                         aria-labelledby="exampleModalLabel"
                                                                         aria-hidden="true">
                                                                         <div class="modal-dialog" role="document">
@@ -297,13 +298,12 @@
 
 
                                 <div class="col">
-                                    <label for="inputName"
-                                        class="control-label">اسم المرحلة</label>
+                                    <label for="inputName" class="control-label">اسم المرحلة</label>
                                     <select name="grade_id" class="custom-select"
                                         onchange="console.log($(this).val())">
                                         <!--placeholder-->
                                         <option value="" selected disabled>
-                                            اختار المرحلة   
+                                            اختار المرحلة
                                         </option>
                                         @foreach ($list_grades as $list_grade)
                                             <option value="{{ $list_grade->id }}"> {{ $list_grade->name }}
@@ -314,20 +314,27 @@
                                 <br>
 
                                 <div class="col">
-                                    <label for="inputName"
-                                        class="control-label">اسم الصف</label>
+                                    <label for="inputName" class="control-label">اسم الصف</label>
                                     <select name="classroom_id" class="custom-select">
 
+                                    </select>
+                                </div><br>
+                                <div class="col">
+                                    <label for="inputName"
+                                        class="control-label">اسماء المعلمين</label>
+                                    <select multiple name="teacher_id[]" class="form-control"
+                                        id="exampleFormControlSelect2">
+                                        @foreach ($teachers as $teacher)
+                                            <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
 
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary"
-                                data-dismiss="modal">الغاء</button>
-                            <button type="submit"
-                                class="btn btn-danger">اضافة</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
+                            <button type="submit" class="btn btn-danger">اضافة</button>
                         </div>
                         </form>
                     </div>
@@ -354,7 +361,8 @@
                     success: function(data) {
                         $('select[name="classroom_id"]').empty();
                         $.each(data, function(key, value) {
-                            $('select[name="classroom_id"]').append('<option value="' +
+                            $('select[name="classroom_id"]').append(
+                                '<option value="' +
                                 key + '">' + value + '</option>');
                         });
                     },
