@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Students;
 
 use App\Models\Section;
+use App\Models\Student;
 use App\Models\Classroom;
-use Flasher\Toastr\Laravel\Facade\Toastr;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Flasher\Toastr\Laravel\Facade\Toastr;
 use App\Http\Requests\StoreStudentRequest;
+use App\Http\Requests\UpdateStudentRequest;
 use App\Repository\StudentsRepositoryInterface;
 
 class StudentController extends Controller
@@ -20,7 +22,11 @@ class StudentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index() {}
+    public function index()
+    {
+        $students = $this->student->indexStudent();
+        return view('students.index', compact('students'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -53,32 +59,33 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+    public function show(string $id) {}
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        return $this->student->editStudent($id);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateStudentRequest $request,  $id)
     {
-        //
+        $this->student->updateStudent($request, $id);
+        toastr()->success('تم التعديل بنجاح');
+        return redirect()->to(route('student.index'));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $this->student->destroyStudent( $id);
+        toastr()->success('تم حذف بنجاح');
+        return redirect()->to(route('student.index'));
     }
 }

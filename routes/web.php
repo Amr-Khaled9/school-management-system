@@ -31,4 +31,3 @@ Route::get('/Get_classrooms/{id}', [StudentController::class,'Get_classrooms']);
 Route::get('/Get_Sections/{id}',[StudentController::class,'Get_Sections']);
 Route::view('add_perent', 'livewire.show_add_perent');
 Route::view('table_perent', 'livewire.table_perent');
-Route::view('pp', 'pp');

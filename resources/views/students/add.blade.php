@@ -69,7 +69,7 @@
                                     <select class="custom-select mr-sm-2" name="gender">
                                         <option selected disabled>اختار...</option>
                                             <option {{old('gender') == 'ذكر' ? 'selected' : ""}} value="ذكر">ذكر</option>
-                                             <option {{old('gender') == 'انثي' ? 'selected' : ""}} value="ذكر">انثي</option>
+                                             <option {{old('gender') == 'انثي' ? 'selected' : ""}} value="انثي">انثي</option>
                                     </select>
                                 </div>
                             </div>
@@ -176,8 +176,7 @@
 <!-- row closed -->
 @endsection
 @section('js')
-    @toastr_js
-    @toastr_render
+
     <script>
         $(document).ready(function () {
             $('select[name="grade_id"]').on('change', function () {

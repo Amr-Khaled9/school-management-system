@@ -28,4 +28,33 @@ class StudentRepository implements StudentsRepositoryInterface
     {
         return Student::create($request->all());
     }
+
+    public function indexStudent()
+    {
+        return Student::all();
+    }
+    public function editStudent($id)
+    {
+        $data['Grades'] = Grade::all();
+        $data['parents'] = MyPerent::all();
+        $data['nationals'] = Nationalitie::all();
+        $data['bloods'] = Type_Blood::all();
+
+        $data['student'] = Student::findOrFail($id);
+
+        return view('students.edit', $data);
+    }
+    public function updateStudent($request, $id)
+    {
+
+        $student = Student::findOrFail($id);
+
+        return  $student->update($request->all());
+    }
+    public function destroyStudent($id)
+    {
+        $student = Student::findOrFail($id);
+
+        return  $student->delete($id);
+    }
 }

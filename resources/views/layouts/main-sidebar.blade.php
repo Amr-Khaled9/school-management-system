@@ -91,8 +91,8 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="table" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{route('student.create')}}">قائمة الطلاب</a> </li>
-                            <li> <a href="data-local.html">Data local</a> </li>
+                            <li> <a href="{{route('student.create')}}">اضافة طالب</a> </li>
+                            <li> <a href="{{route('student.index')}}">قائمة الطلاب</a> </li>
                         </ul>
                     </li>
                     <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">More Pages</li>
