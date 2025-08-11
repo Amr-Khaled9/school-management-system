@@ -92,6 +92,12 @@ class SectionController extends Controller
         } else {
             $section->status = 0;
         }
+        // update pivot table 
+        if (isset($request->teacher_id)) {
+            $section->teachers()->sync($request->teacher_id);
+        } else {
+            $section->teachers()->sync(array());
+        }
         $section->save();
         toastr()->success('تم تعديل القسم بنجاح');
         return back();
