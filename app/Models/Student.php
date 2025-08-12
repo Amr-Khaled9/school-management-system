@@ -32,4 +32,12 @@ class Student extends Model
     {
         return $this->belongsTo(MyPerent::class, 'parent_id');
     }
+
+    //  One To Many (Polymorphic)
+
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+
+    }
 }

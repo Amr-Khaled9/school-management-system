@@ -24,7 +24,11 @@ Route::post('filter-class', [ClassroomController::class, 'filter_class'])->name(
 
 Route::resource('section', SectionController::class);
 Route::get('classes/{id}', [SectionController::class, 'getclass']);
-
+Route::post('upload_attachment',[StudentController::class,'upload_attachment'])->name('upload_attachment');
+Route::get('download_attachment/{name}/{filename}',[StudentController::class,'download_attachment'])->name('download_attachment');
+Route::post('delete_attachment/{id}',[StudentController::class,'delete_attachment'])->name('delete_attachment');
+//download_attachment
+//delete_attachment
 // Get_classrooms
 // Get_Sections
 Route::get('/Get_classrooms/{id}', [StudentController::class,'Get_classrooms']);

@@ -51,15 +51,18 @@ class StudentController extends Controller
      */
     public function store(StoreStudentRequest $request)
     {
-        $this->student->storeStudent($request);
-        Toastr()->success("تم اضافة الطالب $request->name_ar");
-        return Back();
+      return   $this->student->storeStudent($request);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id) {}
+    public function show( $id) {
+
+    $student=  $this->student->showDetails($id);
+    return view('students.show',compact('student'));
+
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -85,7 +88,27 @@ class StudentController extends Controller
     public function destroy($id)
     {
         $this->student->destroyStudent( $id);
-        toastr()->success('تم حذف بنجاح');
+        toastr()->error('تم حذف بنجاح');
         return redirect()->to(route('student.index'));
+    }
+
+    public function upload_attachment(Request $request)
+    {
+        return $this->student->upload_attachment($request);
+    }
+
+    public function delete_attachment($id,Request $request)
+    {
+        $this->student->delete_attachment($id, $request);
+        toastr()->error('تم حذف المرفق');
+        return back();
+    }
+    public function download_attachment($name ,$filename)
+    {
+
+        toastr()->success('تم التنزيل بنجاح');
+
+        return  $this->student->download_attachment($name ,$filename);
+
     }
 }

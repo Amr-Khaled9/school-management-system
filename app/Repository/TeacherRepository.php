@@ -21,6 +21,7 @@ class TeacherRepository implements TeacherRepositoryInterface
 
     public function storeTeacher($request)
     {
+
         return  Teacher::create($request);
     }
     public function editTeacher($id) {
@@ -29,10 +30,10 @@ class TeacherRepository implements TeacherRepositoryInterface
 
     public function updateTeacher($request,$id)  {
         $teacher =Teacher::findOrFail($id);
-        return $teacher->update($request); 
+        return $teacher->update($request);
     }
         public function destroyTeacher($id)  {
             return Teacher::where('id',$id)->delete();
     }
-    
+
 }
