@@ -93,6 +93,7 @@
                         <ul id="table" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{route('student.create')}}">اضافة طالب</a> </li>
                             <li> <a href="{{route('student.index')}}">قائمة الطلاب</a> </li>
+                            <li> <a href="{{route('promotion.index')}}">ترقية الطلاب</a> </li>
                         </ul>
                     </li>
                     <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">More Pages</li>
