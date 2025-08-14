@@ -4,6 +4,7 @@ namespace App\Http\Controllers\promotions;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePromotionRequest;
+use App\Models\Promotion;
 use App\Repository\PromotionRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,8 @@ class PromotionController extends Controller
      */
     public function create()
     {
-        //
+        $promotions= $this->promotion->create();
+        return view('students.promotions.management',compact('promotions'));
     }
 
     /**
@@ -67,8 +69,13 @@ class PromotionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id, Request $request)
     {
-        //
+    return $this->promotion->destroy($id,$request);
+    }
+
+    public function manage()
+    {
+
     }
 }

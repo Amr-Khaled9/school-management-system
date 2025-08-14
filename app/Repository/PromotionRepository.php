@@ -44,4 +44,45 @@ class PromotionRepository implements PromotionRepositoryInterface
         toastr()->success('تم ترقية الطلاب');
         return back();
     }
+
+    public function  create()
+    {
+      return Promotion::all();
+    }
+
+    public function destroy($id ,$request ){
+        if($request->page_id ==1){
+
+            $Promotions = Promotion::all();
+            foreach ($Promotions as $Promotion){
+
+                //التحديث في جدول الطلاب
+                $ids = explode(',',$Promotion->student_id);
+                Student::whereIn('id', $ids)
+                    ->update([
+                        'grade_id'=>$Promotion->from_grade,
+                        'classroom_id'=>$Promotion->from_classroom,
+                        'section_id'=> $Promotion->from_section,
+                    ]);
+
+                //حذف جدول الترقيات
+                Promotion::truncate();
+
+            }
+        toastr()->error('تم تراجع جميع الطلاب');
+        return back();
+        }else{
+            $promotion = Promotion::where('id',$request->id)->first();
+            Student::where('id', $promotion->student_id)
+                ->update([
+                    'grade_id'=>$promotion->from_grade,
+                    'classroom_id'=>$promotion->from_classroom,
+                    'section_id'=> $promotion->from_section,
+                ]);
+            $promotion->delete();
+            toastr()->error('تم تراجع الطالب');
+            return back();
+        }
+    }
+
 }

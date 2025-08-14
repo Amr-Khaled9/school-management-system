@@ -12,27 +12,27 @@ class Promotion extends Model
     {
         return $this->belongsTo(Student::class , 'student_id');
     }
-    public function from_grade()
+    public function f_grade()
     {
         return $this->belongsTo(Grade::class , 'from_grade');
     }
-    public function to_grade()
+    public function t_grade()
     {
         return $this->belongsTo(Grade::class , 'to_grade');
     }
-    public function from_classroom()
+    public function f_classroom()
     {
         return $this->belongsTo(Classroom::class , 'from_classroom');
     }
-    public function to_classroom ()
+    public function t_classroom ()
     {
         return $this->belongsTo(Classroom::class , 'to_classroom');
     }
-    public function from_section()
+    public function f_section()
     {
         return $this->belongsTo(Section::class , 'from_section');
     }
-    public function to_section ()
+    public function t_section ()
     {
         return $this->belongsTo(Section::class , 'to_section');
     }
