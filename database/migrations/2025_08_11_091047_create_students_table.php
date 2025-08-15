@@ -44,6 +44,7 @@ return new class extends Migration
             $table->foreign('parent_id')->references('id')->on('my_perents')->onDelete('cascade')->onUpdate('cascade');
 
             $table->string('academic_year');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
