@@ -7,5 +7,6 @@ interface FeesInvoiceRepositoryInterface
     public function show( $id);
     public function index();
     public function store($request);
+    public function update($request);
 
 }

@@ -108,6 +108,7 @@
                         </a>
                         <ul id="custom-page" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{route('fees.index')}}">الرسوم الدراسية</a> </li>
+                            <li> <a href="{{route('fees_invoice.index')}}">الفواتير</a> </li>
                          </ul>
                     </li>
                     <!-- menu item Authentication-->

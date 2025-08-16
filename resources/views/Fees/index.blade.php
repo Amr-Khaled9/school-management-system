@@ -85,7 +85,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>                                        @endforeach
+                                            </div>
+                                        @endforeach
                                     </table>
                                 </div>
                             </div>

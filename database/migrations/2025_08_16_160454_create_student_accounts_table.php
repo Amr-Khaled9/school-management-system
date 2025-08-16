@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('classroom_id')->references('id')->on('classrooms')->onDelete('cascade')->onUpdate('cascade');
             $table->decimal('debit',8,2)->nullable();
             $table->decimal('credit',8,2)->nullable();
+            $table->string('type');
             $table->string('description')->nullable();
             $table->timestamps();
         });
