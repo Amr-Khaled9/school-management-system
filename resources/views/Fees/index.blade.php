@@ -34,6 +34,7 @@
                                             <th>المرحلة الدراسية</th>
                                             <th>الصف الدراسي</th>
                                             <th>السنة الدراسية</th>
+                                            <th>نوع الرسوم</th>
                                             <th>ملاحظات</th>
                                             <th>العمليات</th>
                                         </tr>
@@ -47,6 +48,11 @@
                                                 <td>{{$fee->grade->name}}</td>
                                                 <td>{{$fee->classroom->name}}</td>
                                                 <td>{{$fee->year}}</td>
+                                                <td>@if($fee->fee_type == 1)
+                                                        {{"رسوم دراسية"}}
+                                                    @else
+                                                        {{"رسوم باص"}}
+                                                    @endif</td>
                                                 <td>{{$fee->description}}</td>
                                                 <td>
                                                     <a href="{{route('fees.edit',$fee->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>

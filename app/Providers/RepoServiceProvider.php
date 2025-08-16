@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repository\FeesInvoiceRepository;
+use App\Repository\FeesInvoiceRepositoryInterface;
 use App\Repository\FeesRepository;
 use App\Repository\FeesRepositoryInterface;
 use App\Repository\GraduatedRepository;
@@ -44,6 +46,11 @@ class RepoServiceProvider extends ServiceProvider
         $this->app->bind(
             FeesRepositoryInterface::class,
             FeesRepository::class,
+
+        );
+        $this->app->bind(
+            FeesInvoiceRepositoryInterface::class,
+            FeesInvoiceRepository::class,
 
         );
     }

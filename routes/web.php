@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Classrooms\ClassroomController;
+use App\Http\Controllers\Fees\Fees_invoice;
 use App\Http\Controllers\Fees\FeesController;
 use App\Http\Controllers\Grades\GradeController;
 use App\Http\Controllers\promotions\PromotionController;
@@ -24,6 +25,7 @@ Route::resource('student', StudentController::class);
 Route::resource('promotion', promotionController::class);
 Route::resource('graduated', GraduatedController::class);
 Route::resource('fees', FeesController::class);
+Route::resource('fees_invoice', Fees_invoice::class );
 
 Route::post('delete-all', [ClassroomController::class, 'delete_all'])->name('delete_all');
 Route::post('filter-class', [ClassroomController::class, 'filter_class'])->name('filter_class');

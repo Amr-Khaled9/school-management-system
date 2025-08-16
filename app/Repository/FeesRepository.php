@@ -16,6 +16,7 @@ public function store($request)
     $fees->classroom_id = $request->Classroom_id;
     $fees->year = $request->year;
     $fees->description = $request->description;
+    $fees->fee_type =$request->fee_type;
     $fees->save();
 }
 public function update ($request)
@@ -28,8 +29,10 @@ public function update ($request)
     'amount' =>$request->amount,
     'classroom_id' => $request->Classroom_id,
     'year' => $request->year,
-    'description' => $request->description
-]);
+    'description' => $request->description,
+    'fee_type' =>$request->fee_type,
+
+    ]);
 
 }
 }

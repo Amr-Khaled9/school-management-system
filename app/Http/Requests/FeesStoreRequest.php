@@ -28,6 +28,7 @@ class FeesStoreRequest extends FormRequest
             "Grade_id" => "required",
             'Classroom_id' => 'required|integer|unique:fees,classroom_id,'.$this->id,
             "year" => "required",
+            'fee_type'=>'required',
             "description" => "nullable",
         ];
     }
@@ -42,6 +43,7 @@ class FeesStoreRequest extends FormRequest
 
             "amount.required"     => "  المبلغ مطلوب.",
             "amount.integer"      => "  المبلغ يجب أن يكون رقمًا صحيحًا.",
+            "fee_type.required"     => "نوع الرسوم مطلوب",
 
             "Grade_id.required"   => "  المرحلة الدراسية مطلوب.",
             "Classroom_id.required" => "  الصف الدراسي مطلوب.",
