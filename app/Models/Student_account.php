@@ -19,4 +19,8 @@ class Student_account extends Model
     {
         return $this->belongsTo(Student::class,'student_id');
     }
+    public function receipt()
+    {
+        return $this->belongsTo(Receipt_Student::class,'receipt_id');
+    }
 }

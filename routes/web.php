@@ -5,6 +5,7 @@ use App\Http\Controllers\Fees\Fees_invoice;
 use App\Http\Controllers\Fees\FeesController;
 use App\Http\Controllers\Grades\GradeController;
 use App\Http\Controllers\promotions\PromotionController;
+use App\Http\Controllers\Receipts\ReceiptStudentsController;
 use App\Http\Controllers\Sections\SectionController;
 use App\Http\Controllers\Students\GraduatedController;
 use App\Http\Controllers\Students\StudentController;
@@ -26,6 +27,7 @@ Route::resource('promotion', promotionController::class);
 Route::resource('graduated', GraduatedController::class);
 Route::resource('fees', FeesController::class);
 Route::resource('fees_invoice', Fees_invoice::class );
+Route::resource('receipt_student', ReceiptStudentsController::class );
 
 Route::post('delete-all', [ClassroomController::class, 'delete_all'])->name('delete_all');
 Route::post('filter-class', [ClassroomController::class, 'filter_class'])->name('filter_class');

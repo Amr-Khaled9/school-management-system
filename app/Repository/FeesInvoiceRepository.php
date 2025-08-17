@@ -7,6 +7,7 @@ use App\Models\Fees;
 use App\Models\Student;
 use App\Models\Student_account;
 use DeepCopyTest\Matcher\Y;
+use Illuminate\Support\Facades\DB;
 
 class FeesInvoiceRepository implements FeesInvoiceRepositoryInterface
 {
@@ -20,19 +21,12 @@ class FeesInvoiceRepository implements FeesInvoiceRepositoryInterface
     {
 
     }
-    //"List_Fees" => array:1 [▼
-//0 => array:4 [▼
-//"student_id" => "2"
-//"fee_id" => "2"
-//"amount" => "10000.00"
-//"description" => "aaa"
-//]
-//]
-//"Grade_id" => "2"
-//"Classroom_id" => "1"
+
 
     public function store($request)
     {
+        DB::beginTransaction();
+
         foreach ($request->List_Fees as $list_fee) {
             $fee = new Fees_invoice();
             $fee->invoice_date = date('Y-m-d');
@@ -41,6 +35,7 @@ class FeesInvoiceRepository implements FeesInvoiceRepositoryInterface
             $fee->amount = $list_fee['amount'];
             $fee->description = $list_fee['description'];
             $fee->grade_id = $request->Grade_id;
+            // recepit
             $fee->classroom_id = $request->Classroom_id;
             $fee->save();
 
@@ -54,14 +49,11 @@ class FeesInvoiceRepository implements FeesInvoiceRepositoryInterface
             $Student_account->grade_id = $request->Grade_id;
             $Student_account->classroom_id = $request->Classroom_id;
             $Student_account->save();
+            DB::commit();
 
         }
     }
-//  "title_ar" => "aaaa"
-//  "id" => "1"
-//  "amount" => "10000.00"
-//  "fee_id" => "2"
-//  "description" => "aaa"
+
 
         public function update($request){
                 $fee =   Fees_invoice::findOrFail($request->id);

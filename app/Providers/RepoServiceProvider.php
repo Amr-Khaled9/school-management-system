@@ -10,6 +10,8 @@ use App\Repository\GraduatedRepository;
 use App\Repository\GraduatedRepositoryInterface;
 use App\Repository\PromotionRepository;
 use App\Repository\PromotionRepositoryInterface;
+use App\Repository\ReceiptStudentsRepository;
+use App\Repository\ReceiptStudentsRepositoryInterface;
 use App\Repository\StudentRepository;
 use App\Repository\StudentsRepositoryInterface;
 use App\Repository\TeacherRepository;
@@ -51,6 +53,11 @@ class RepoServiceProvider extends ServiceProvider
         $this->app->bind(
             FeesInvoiceRepositoryInterface::class,
             FeesInvoiceRepository::class,
+
+        );
+        $this->app->bind(
+            ReceiptStudentsRepositoryInterface::class,
+            ReceiptStudentsRepository::class,
 
         );
     }
