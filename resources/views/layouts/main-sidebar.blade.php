@@ -109,6 +109,8 @@
                         <ul id="custom-page" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{route('fees.index')}}">الرسوم الدراسية</a> </li>
                             <li> <a href="{{route('fees_invoice.index')}}">الفواتير</a> </li>
+                            <li> <a href="{{route('receipt_student.index')}}">سندات القبض</a> </li>
+                            <li> <a href="{{route('processing_fee.index')}}">استبعاد رسوم</a> </li>
                          </ul>
                     </li>
                     <!-- menu item Authentication-->

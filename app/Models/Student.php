@@ -34,6 +34,12 @@ class Student extends Model
     {
         return $this->belongsTo(MyPerent::class, 'parent_id');
     }
+        public function student_account()
+    {
+        return $this->hasMany(Student_account::class, 'student_id');
+    }
+
+
 
     //  One To Many (Polymorphic)
 

@@ -8,6 +8,8 @@ use App\Repository\FeesRepository;
 use App\Repository\FeesRepositoryInterface;
 use App\Repository\GraduatedRepository;
 use App\Repository\GraduatedRepositoryInterface;
+use App\Repository\ProcessingFeeRepository;
+use App\Repository\ProcessingFeeRepositoryInterface;
 use App\Repository\PromotionRepository;
 use App\Repository\PromotionRepositoryInterface;
 use App\Repository\ReceiptStudentsRepository;
@@ -56,8 +58,14 @@ class RepoServiceProvider extends ServiceProvider
 
         );
         $this->app->bind(
+            ProcessingFeeRepositoryInterface::class,
+            ProcessingFeeRepository::class,
+
+
+        );
+        $this->app->bind(
             ReceiptStudentsRepositoryInterface::class,
-            ReceiptStudentsRepository::class,
+           ReceiptStudentsRepository::class,
 
         );
     }
