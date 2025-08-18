@@ -127,63 +127,76 @@
                         </ul>
                     </li>
                     <!-- menu item maps-->
-                    <li>
-                        <a href="maps.html"><i class="ti-location-pin"></i><span class="right-nav-text">maps</span>
-                            <span class="badge badge-pill badge-success float-right mt-1">06</span></a>
-                    </li>
+
                     <!-- menu item timeline-->
                     <li>
                         <a href="{{route('subject.index')}}"><i class="ti-panel"></i><span class="right-nav-text">قائمة المواد</span>
                         </a>
                     </li>
-                    <!-- menu item Multi level-->
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#multi-level">
-                            <div class="pull-left"><i class="ti-layers"></i><span class="right-nav-text">المواد الدراسية</span></div>
+                        <a href="{{route('exam.index')}}"><i class="ti-location-pin"></i><span class="right-nav-text">الامتحانات</span>
+                            <span class="badge badge-pill badge-success float-right mt-1">06</span></a>
+                    </li>
+                    <!-- menu item Multi level-->
+                    <!-- library-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#library-icon">
+                            <div class="pull-left"><i class="fas fa-book"></i><span class="right-nav-text">{{trans('main_trans.library')}}</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
-                        <ul id="multi-level" class="collapse" data-parent="#sidebarnav">
-                            <li>
-                                <a href="{{route('subject.index')}}" data-toggle="collapse" data-target="#auth">قائمة المواد<div class="pull-right"><i class="ti-plus"></i></div>
-                                    <div class="clearfix"></div>
-                                </a>
-                                <ul id="auth" class="collapse">
-                                    <li>
-                                        <a href="javascript:void(0);" data-toggle="collapse"
-                                            data-target="#login">Level
-                                            item 1.1<div class="pull-right"><i class="ti-plus"></i></div>
-                                            <div class="clearfix"></div>
-                                        </a>
-                                        <ul id="login" class="collapse">
-                                            <li>
-                                                <a href="javascript:void(0);" data-toggle="collapse"
-                                                    data-target="#invoice">level item 1.1.1<div class="pull-right"><i
-                                                            class="ti-plus"></i></div>
-                                                    <div class="clearfix"></div>
-                                                </a>
-                                                <ul id="invoice" class="collapse">
-                                                    <li> <a href="#">level item 1.1.1.1</a> </li>
-                                                    <li> <a href="#">level item 1.1.1.2</a> </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li> <a href="#">level item 1.2</a> </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" data-toggle="collapse" data-target="#error">level
-                                    item 2<div class="pull-right"><i class="ti-plus"></i></div>
-                                    <div class="clearfix"></div>
-                                </a>
-                                <ul id="error" class="collapse">
-                                    <li> <a href="#">level item 2.1</a> </li>
-                                    <li> <a href="#">level item 2.2</a> </li>
-                                </ul>
-                            </li>
+                        <ul id="library-icon" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
+                            <li> <a href="themify-icons.html">Themify icons</a> </li>
+                            <li> <a href="weather-icon.html">Weather icons</a> </li>
                         </ul>
                     </li>
+
+
+                    <!-- Onlinec lasses-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Onlineclasses-icon">
+                            <div class="pull-left"><i class="fas fa-video"></i><span class="right-nav-text">{{trans('main_trans.Onlineclasses')}}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="Onlineclasses-icon" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
+                            <li> <a href="themify-icons.html">Themify icons</a> </li>
+                            <li> <a href="weather-icon.html">Weather icons</a> </li>
+                        </ul>
+                    </li>
+
+
+                    <!-- Settings-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Settings-icon">
+                            <div class="pull-left"><i class="fas fa-cogs"></i><span class="right-nav-text">{{trans('main_trans.Settings')}}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="Settings-icon" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
+                            <li> <a href="themify-icons.html">Themify icons</a> </li>
+                            <li> <a href="weather-icon.html">Weather icons</a> </li>
+                        </ul>
+                    </li>
+
+
+                    <!-- Users-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Users-icon">
+                            <div class="pull-left"><i class="fas fa-users"></i><span class="right-nav-text">{{trans('main_trans.Users')}}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="Users-icon" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
+                            <li> <a href="themify-icons.html">Themify icons</a> </li>
+                            <li> <a href="weather-icon.html">Weather icons</a> </li>
+                        </ul>
+                    </li>
+
                 </ul>
             </div>
         </div>

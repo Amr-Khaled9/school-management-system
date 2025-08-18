@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AttendenceController;
 use App\Http\Controllers\Classrooms\ClassroomController;
+use App\Http\Controllers\Exams\ExamController;
 use App\Http\Controllers\Fees\Fees_invoice;
 use App\Http\Controllers\Fees\FeesController;
 use App\Http\Controllers\Grades\GradeController;
@@ -34,6 +35,7 @@ Route::resource('receipt_student', ReceiptStudentsController::class );
 Route::resource('processing_fee',  ProcessingFeeController::class );
 Route::resource('attendence',  AttendenceController::class );
 Route::resource('subject',   SubjectController::class );
+Route::resource('exam',   ExamController::class );
 
 Route::post('delete-all', [ClassroomController::class, 'delete_all'])->name('delete_all');
 Route::post('filter-class', [ClassroomController::class, 'filter_class'])->name('filter_class');
