@@ -133,21 +133,19 @@
                     </li>
                     <!-- menu item timeline-->
                     <li>
-                        <a href="timeline.html"><i class="ti-panel"></i><span class="right-nav-text">timeline</span>
+                        <a href="{{route('subject.index')}}"><i class="ti-panel"></i><span class="right-nav-text">قائمة المواد</span>
                         </a>
                     </li>
                     <!-- menu item Multi level-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#multi-level">
-                            <div class="pull-left"><i class="ti-layers"></i><span class="right-nav-text">Multi
-                                    level Menu</span></div>
+                            <div class="pull-left"><i class="ti-layers"></i><span class="right-nav-text">المواد الدراسية</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="multi-level" class="collapse" data-parent="#sidebarnav">
                             <li>
-                                <a href="javascript:void(0);" data-toggle="collapse" data-target="#auth">Level
-                                    item 1<div class="pull-right"><i class="ti-plus"></i></div>
+                                <a href="{{route('subject.index')}}" data-toggle="collapse" data-target="#auth">قائمة المواد<div class="pull-right"><i class="ti-plus"></i></div>
                                     <div class="clearfix"></div>
                                 </a>
                                 <ul id="auth" class="collapse">

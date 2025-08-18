@@ -18,6 +18,8 @@ use App\Repository\ReceiptStudentsRepository;
 use App\Repository\ReceiptStudentsRepositoryInterface;
 use App\Repository\StudentRepository;
 use App\Repository\StudentsRepositoryInterface;
+use App\Repository\SubjectRepository;
+use App\Repository\SubjectRepositoryInterface;
 use App\Repository\TeacherRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Repository\TeacherRepositoryInterface;
@@ -73,6 +75,11 @@ class RepoServiceProvider extends ServiceProvider
         $this->app->bind(
             AttendenceRepositoryInterface::class,
             AttendenceRepository::class,
+
+        );
+        $this->app->bind(
+            SubjectRepositoryInterface::class,
+            SubjectRepository::class,
 
         );
     }
