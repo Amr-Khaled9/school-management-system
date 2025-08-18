@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttendenceController;
 use App\Http\Controllers\Classrooms\ClassroomController;
 use App\Http\Controllers\Fees\Fees_invoice;
 use App\Http\Controllers\Fees\FeesController;
@@ -30,6 +31,7 @@ Route::resource('fees', FeesController::class);
 Route::resource('fees_invoice', Fees_invoice::class );
 Route::resource('receipt_student', ReceiptStudentsController::class );
 Route::resource('processing_fee',  ProcessingFeeController::class );
+Route::resource('attendence',  AttendenceController::class );
 
 Route::post('delete-all', [ClassroomController::class, 'delete_all'])->name('delete_all');
 Route::post('filter-class', [ClassroomController::class, 'filter_class'])->name('filter_class');

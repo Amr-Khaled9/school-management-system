@@ -117,14 +117,13 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#authentication">
                             <div class="pull-left"><i class="ti-id-badge"></i><span
-                                    class="right-nav-text">Authentication</span></div>
+                                    class="right-nav-text">الحضور و الغياب</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="authentication" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="login.html">login</a> </li>
-                            <li> <a href="register.html">register</a> </li>
-                            <li> <a href="lockscreen.html">Lock screen</a> </li>
+                            <li> <a href="{{route('attendence.index')}}">قائمة الطلاب</a></li>
+
                         </ul>
                     </li>
                     <!-- menu item maps-->

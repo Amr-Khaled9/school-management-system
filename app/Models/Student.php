@@ -38,6 +38,10 @@ class Student extends Model
     {
         return $this->hasMany(Student_account::class, 'student_id');
     }
+    public function attendence()
+    {
+        return $this->hasMany(Attendence::class, 'student_id');
+    }
 
 
 
