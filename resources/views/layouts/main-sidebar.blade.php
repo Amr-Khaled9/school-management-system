@@ -126,19 +126,26 @@
 
                         </ul>
                     </li>
-                    <!-- menu item maps-->
 
                     <!-- menu item timeline-->
                     <li>
                         <a href="{{route('subject.index')}}"><i class="ti-panel"></i><span class="right-nav-text">قائمة المواد</span>
                         </a>
                     </li>
+
+                    <!-- Quizzes-->
                     <li>
-                        <a href="{{route('exam.index')}}"><i class="ti-location-pin"></i><span class="right-nav-text">الامتحانات</span>
-                            <span class="badge badge-pill badge-success float-right mt-1">06</span></a>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Exams-icon">
+                            <div class="pull-left"><i class="fas fa-book-open"></i><span class="right-nav-text">الاختبارات</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="Exams-icon" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{route('quizze.index')}}">قائمة الاختبارات</a> </li>
+                        </ul>
                     </li>
-                    <!-- menu item Multi level-->
-                    <!-- library-->
+
+                     <!-- library-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#library-icon">
                             <div class="pull-left"><i class="fas fa-book"></i><span class="right-nav-text">{{trans('main_trans.library')}}</span></div>

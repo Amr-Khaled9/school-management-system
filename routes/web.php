@@ -7,6 +7,7 @@ use App\Http\Controllers\Fees\Fees_invoice;
 use App\Http\Controllers\Fees\FeesController;
 use App\Http\Controllers\Grades\GradeController;
 use App\Http\Controllers\promotions\PromotionController;
+use App\Http\Controllers\Quizzes\QuizzeController;
 use App\Http\Controllers\Receipts\ReceiptStudentsController;
 use App\Http\Controllers\Sections\SectionController;
 use App\Http\Controllers\Students\GraduatedController;
@@ -35,7 +36,7 @@ Route::resource('receipt_student', ReceiptStudentsController::class );
 Route::resource('processing_fee',  ProcessingFeeController::class );
 Route::resource('attendence',  AttendenceController::class );
 Route::resource('subject',   SubjectController::class );
-Route::resource('exam',   ExamController::class );
+Route::resource('quizze',   QuizzeController::class );
 
 Route::post('delete-all', [ClassroomController::class, 'delete_all'])->name('delete_all');
 Route::post('filter-class', [ClassroomController::class, 'filter_class'])->name('filter_class');
