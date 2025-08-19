@@ -14,6 +14,8 @@ use App\Repository\ProcessingFeeRepository;
 use App\Repository\ProcessingFeeRepositoryInterface;
 use App\Repository\PromotionRepository;
 use App\Repository\PromotionRepositoryInterface;
+use App\Repository\QuestionRepository;
+use App\Repository\QuestionRepositoryInterface;
 use App\Repository\QuizzeRepository;
 use App\Repository\QuizzeRepositoryInterface;
 use App\Repository\ReceiptStudentsRepository;
@@ -87,6 +89,11 @@ class RepoServiceProvider extends ServiceProvider
         $this->app->bind(
             QuizzeRepositoryInterface::class,
             QuizzeRepository::class,
+
+        );
+        $this->app->bind(
+            QuestionRepositoryInterface::class,
+            QuestionRepository::class,
 
         );
     }
