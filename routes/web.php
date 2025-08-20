@@ -12,6 +12,7 @@ use App\Http\Controllers\Quizzes\QuizzeController;
 use App\Http\Controllers\Receipts\ReceiptStudentsController;
 use App\Http\Controllers\Sections\SectionController;
 use App\Http\Controllers\Students\GraduatedController;
+use App\Http\Controllers\Students\OnlineClassController;
 use App\Http\Controllers\Students\ProcessingFeeController;
 use App\Http\Controllers\Students\StudentController;
 use App\Http\Controllers\SubjectController;
@@ -39,6 +40,7 @@ Route::resource('attendence',  AttendenceController::class );
 Route::resource('subject',   SubjectController::class );
 Route::resource('quizze',   QuizzeController::class );
 Route::resource('question',    QuestionController::class );
+Route::resource('online_class',    OnlineClassController::class );
 
 Route::post('delete-all', [ClassroomController::class, 'delete_all'])->name('delete_all');
 Route::post('filter-class', [ClassroomController::class, 'filter_class'])->name('filter_class');
