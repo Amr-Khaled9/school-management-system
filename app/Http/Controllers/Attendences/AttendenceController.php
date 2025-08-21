@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Attendences;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\AttendStoreRequest;
 use App\Models\Attendence;
-use App\Http\Controllers\Controller;
 use App\Models\Grade;
 use App\Models\Student;
 use App\Models\Teacher;

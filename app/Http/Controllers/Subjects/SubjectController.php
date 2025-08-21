@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Subjects;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\SubjectStoreRequest;
 use App\Http\Requests\SubjectUpdateRequest;
 use App\Models\Grade;
 use App\Models\Subject;
-use App\Http\Controllers\Controller;
 use App\Models\Teacher;
 use App\Repository\SubjectRepositoryInterface;
 use Illuminate\Http\Request;

@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Teachers;
 
-use App\Models\Teacher;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Flasher\Toastr\Laravel\Facade\Toastr;
 use App\Http\Requests\StoreTeacherRequest;
 use App\Http\Requests\UpdateteacherRequest;
+use App\Models\Teacher;
 use App\Repository\TeacherRepositoryInterface;
 
 class TeacherController extends Controller
@@ -42,10 +40,10 @@ class TeacherController extends Controller
     public function store(StoreTeacherRequest $request)
     {
         // validation
-        // insert DB 
+        // insert DB
         $data = $request->except('_token');
         $this->teacher->storeTeacher($data);
-        //send message 
+        //send message
         Toastr()->success('تم اضافة المعلم');
         return Back();
     }
@@ -74,7 +72,7 @@ class TeacherController extends Controller
      */
     public function update(UpdateteacherRequest $request, $id)
     {
-        //validation 
+        //validation
         $data = $request->except('_token');
         $this->teacher->updateTeacher($data, $id);
         Toastr()->success('تم تعديل المعلم ');

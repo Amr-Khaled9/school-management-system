@@ -45,7 +45,12 @@ return [
             'root' => public_path('/'),
             'throw' => false,
         ],
-
+        'upload_books' => [
+            'driver' => 'local',
+            'root' => storage_path('app/library/attachments'),
+            'url' => env('APP_URL').'/storage/library/attachments',
+            'visibility' => 'public',
+        ],
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\AttendenceController;
+use App\Http\Controllers\Attendences\AttendenceController;
 use App\Http\Controllers\Classrooms\ClassroomController;
 use App\Http\Controllers\Exams\ExamController;
 use App\Http\Controllers\Fees\Fees_invoice;
 use App\Http\Controllers\Fees\FeesController;
 use App\Http\Controllers\Grades\GradeController;
+use App\Http\Controllers\Library\LibraryController;
 use App\Http\Controllers\promotions\PromotionController;
 use App\Http\Controllers\Questions\QuestionController;
 use App\Http\Controllers\Quizzes\QuizzeController;
@@ -15,8 +16,8 @@ use App\Http\Controllers\Students\GraduatedController;
 use App\Http\Controllers\Students\OnlineClassController;
 use App\Http\Controllers\Students\ProcessingFeeController;
 use App\Http\Controllers\Students\StudentController;
-use App\Http\Controllers\SubjectController;
-use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\Subjects\SubjectController;
+use App\Http\Controllers\Teachers\TeacherController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -41,6 +42,8 @@ Route::resource('subject',   SubjectController::class );
 Route::resource('quizze',   QuizzeController::class );
 Route::resource('question',    QuestionController::class );
 Route::resource('online_class',    OnlineClassController::class );
+Route::resource('library',    libraryController::class );
+Route::get('downloadAttachment/{name}',[libraryController::class ,'download_file'])->name('downloadAttachment');
 
 Route::post('delete-all', [ClassroomController::class, 'delete_all'])->name('delete_all');
 Route::post('filter-class', [ClassroomController::class, 'filter_class'])->name('filter_class');

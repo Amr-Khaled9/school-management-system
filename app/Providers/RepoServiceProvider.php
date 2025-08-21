@@ -10,6 +10,8 @@ use App\Repository\FeesRepository;
 use App\Repository\FeesRepositoryInterface;
 use App\Repository\GraduatedRepository;
 use App\Repository\GraduatedRepositoryInterface;
+use App\Repository\LibraryRepository;
+use App\Repository\LibraryRepositoryInterface;
 use App\Repository\ProcessingFeeRepository;
 use App\Repository\ProcessingFeeRepositoryInterface;
 use App\Repository\PromotionRepository;
@@ -94,6 +96,11 @@ class RepoServiceProvider extends ServiceProvider
         $this->app->bind(
             QuestionRepositoryInterface::class,
             QuestionRepository::class,
+
+        );
+        $this->app->bind(
+            LibraryRepositoryInterface::class,
+            LibraryRepository::class,
 
         );
     }
