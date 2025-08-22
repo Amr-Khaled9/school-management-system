@@ -51,6 +51,11 @@ return [
             'url' => env('APP_URL').'/storage/library/attachments',
             'visibility' => 'public',
         ],
+        'upload_photo' => [
+            'driver' => 'local',
+            'root' => public_path('/photo'),
+            'visibility' => 'public',
+        ],
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

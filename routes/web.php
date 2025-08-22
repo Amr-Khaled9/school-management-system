@@ -12,6 +12,7 @@ use App\Http\Controllers\Questions\QuestionController;
 use App\Http\Controllers\Quizzes\QuizzeController;
 use App\Http\Controllers\Receipts\ReceiptStudentsController;
 use App\Http\Controllers\Sections\SectionController;
+use App\Http\Controllers\Setting\SettingController;
 use App\Http\Controllers\Students\GraduatedController;
 use App\Http\Controllers\Students\OnlineClassController;
 use App\Http\Controllers\Students\ProcessingFeeController;
@@ -44,6 +45,9 @@ Route::resource('question',    QuestionController::class );
 Route::resource('online_class',    OnlineClassController::class );
 Route::resource('library',    libraryController::class );
 Route::get('downloadAttachment/{name}',[libraryController::class ,'download_file'])->name('downloadAttachment');
+
+Route::get('setting',[SettingController::class,'index'])->name('setting.index');
+Route::put('setting/update',[SettingController::class,'update'])->name('setting.update');
 
 Route::post('delete-all', [ClassroomController::class, 'delete_all'])->name('delete_all');
 Route::post('filter-class', [ClassroomController::class, 'filter_class'])->name('filter_class');
