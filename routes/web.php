@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Attendences\AttendenceController;
@@ -25,10 +27,15 @@ use App\Http\Controllers\Teachers\TeacherController;
 
 
 
-Route::get('/', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// الصفحة الرئيسية
+Route::get('/', [HomeController::class, 'index'])->name('selection');
 
+// Routes خاصة بالـ Login
+Route::middleware('guest')->group(function () {
+    Route::get('/login/{type}', [LoginController::class, 'loginForm'])->name('login.show');
+
+    Route::post('/login', [LoginController::class, 'login'])->name('login');
+});
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

@@ -116,14 +116,20 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>Settings</a>
 
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            <i class="text-danger ti-unlock"></i> Logout
-                        </a>
+                        @if(auth('student')->check())
+                            <form method="GET" action="{{ route('logout','student') }}">
+                                @elseif(auth('teacher')->check())
+                                    <form method="GET" action="{{ route('logout','teacher') }}">
+                                        @elseif(auth('perent')->check())
+                                            <form method="GET" action="{{ route('logout','parent') }}">
+                                                @else
+                                                    <form method="GET" action="{{ route('logout','web') }}">
+                                                        @endif
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>                    </div>
+                                                        @csrf
+                                                        <a class="dropdown-item" href="#" onclick="event.preventDefault();this.closest('form').submit();"><i class="bx bx-log-out"></i>تسجيل الخروج</a>
+                                                    </form>
+                    </div>
                 </li>
             </ul>
         </nav>
