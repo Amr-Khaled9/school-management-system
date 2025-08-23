@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Attendences\AttendenceController;
 use App\Http\Controllers\Classrooms\ClassroomController;
 use App\Http\Controllers\Exams\ExamController;
@@ -19,14 +21,19 @@ use App\Http\Controllers\Students\ProcessingFeeController;
 use App\Http\Controllers\Students\StudentController;
 use App\Http\Controllers\Subjects\SubjectController;
 use App\Http\Controllers\Teachers\TeacherController;
-use Illuminate\Support\Facades\Route;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+
 
 
 Route::get('/', function () {
     return view('dashboard');
-});
+})->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 Route::resource('grade', GradeController::class);
 Route::resource('classroom', ClassroomController::class);
 Route::resource('section', SectionController::class);
@@ -61,3 +68,4 @@ Route::get('/Get_classrooms/{id}', [StudentController::class,'Get_classrooms']);
 Route::get('/Get_Sections/{id}',[StudentController::class,'Get_Sections']);
 Route::view('add_perent', 'livewire.show_add_perent');
 Route::view('table_perent', 'livewire.table_perent');
+require __DIR__.'/auth.php';
