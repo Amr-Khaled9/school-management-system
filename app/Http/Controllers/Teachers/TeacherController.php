@@ -7,6 +7,7 @@ use App\Http\Requests\StoreTeacherRequest;
 use App\Http\Requests\UpdateteacherRequest;
 use App\Models\Teacher;
 use App\Repository\TeacherRepositoryInterface;
+use Illuminate\Support\Facades\Hash;
 
 class TeacherController extends Controller
 {
@@ -41,7 +42,8 @@ class TeacherController extends Controller
     {
         // validation
         // insert DB
-        $data = $request->except('_token');
+        $data = $request->except('_token','password');
+        $data['password']= Hash::make($request->password);
         $this->teacher->storeTeacher($data);
         //send message
         Toastr()->success('تم اضافة المعلم');

@@ -115,20 +115,10 @@
                                 class="badge badge-info">6</span> </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>Settings</a>
+                        <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>logout</a>
 
-                        @if(auth('student')->check())
-                            <form method="GET" action="{{ route('logout','student') }}">
-                                @elseif(auth('teacher')->check())
-                                    <form method="GET" action="{{ route('logout','teacher') }}">
-                                        @elseif(auth('perent')->check())
-                                            <form method="GET" action="{{ route('logout','parent') }}">
-                                                @else
-                                                    <form method="GET" action="{{ route('logout','web') }}">
-                                                        @endif
 
-                                                        @csrf
-                                                        <a class="dropdown-item" href="#" onclick="event.preventDefault();this.closest('form').submit();"><i class="bx bx-log-out"></i>تسجيل الخروج</a>
-                                                    </form>
+
                     </div>
                 </li>
             </ul>

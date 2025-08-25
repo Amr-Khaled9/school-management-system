@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\ProfileController;
+ use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Attendences\AttendenceController;
 use App\Http\Controllers\Classrooms\ClassroomController;
@@ -23,24 +24,13 @@ use App\Http\Controllers\Students\ProcessingFeeController;
 use App\Http\Controllers\Students\StudentController;
 use App\Http\Controllers\Subjects\SubjectController;
 use App\Http\Controllers\Teachers\TeacherController;
- use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
 
-// الصفحة الرئيسية
-Route::get('/', [HomeController::class, 'index'])->name('selection');
 
-// Routes خاصة بالـ Login
-Route::middleware('guest')->group(function () {
-    Route::get('/login/{type}', [LoginController::class, 'loginForm'])->name('login.show');
+Route::get('/', [HomeController::class,'dashboard'])->name('dashboard');
 
-    Route::post('/login', [LoginController::class, 'login'])->name('login');
-});
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+
 Route::resource('grade', GradeController::class);
 Route::resource('classroom', ClassroomController::class);
 Route::resource('section', SectionController::class);
@@ -77,4 +67,7 @@ Route::view('add_perent', 'livewire.show_add_perent');
 Route::view('add_perent', 'livewire.show_add_perent')->name('add_parent');
 Route::view('table_perent', 'livewire.table_perent');
 
-require __DIR__.'/auth.php';
+Route::view('/teacher/dashboard','teachers.dashboard');
+
+
+

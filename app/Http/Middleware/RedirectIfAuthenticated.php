@@ -22,17 +22,7 @@ class RedirectIfAuthenticated
             return redirect(RouteServiceProvider::HOME);
         }
 
-        if (auth('student')->check()) {
-            return redirect(RouteServiceProvider::STUDENT);
-        }
 
-        if (auth('teacher')->check()) {
-            return redirect(RouteServiceProvider::TEACHER);
-        }
-
-        if (auth('perent')->check()) {
-            return redirect(RouteServiceProvider::PERENT);
-        }
 
         return $next($request);
     }

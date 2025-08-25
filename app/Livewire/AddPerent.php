@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Hash;
 
 class AddPerent extends Component
 {
-    use WithFileUploads; //تبع الرفع 
+    use WithFileUploads; //تبع الرفع
     // لازم كل variable , input جوه blade
-    public $Email, $successMessage = '', $show_table = true, $updateMode = false, $My_Parent;
-    public $Password, $Name_Father, $National_ID_Father, $Passport_ID_Father, $Phone_Father, $Job_Father,
+    public $email, $successMessage = '', $show_table = true, $updateMode = false, $My_Parent;
+    public $password, $Name_Father, $National_ID_Father, $Passport_ID_Father, $Phone_Father, $Job_Father,
         $Nationality_Father_id, $Blood_Type_Father_id, $Address_Father, $Religion_Father_id,
         $Name_Mother, $National_ID_Mother, $Passport_ID_Mother, $Phone_Mother, $Job_Mother,
         $Nationality_Mother_id, $Blood_Type_Mother_id, $Address_Mother, $Religion_Mother_id, $Parent_id, $photos;
@@ -26,8 +26,8 @@ class AddPerent extends Component
     public function rules()
     {
         return [
-            'Email' => 'required',
-            'Password' => 'required',
+            'email' => 'required',
+            'password' => 'required',
             'Name_Father' => 'required',
             'Job_Father' => 'required',
             'National_ID_Father' => 'required',
@@ -49,13 +49,13 @@ class AddPerent extends Component
             'Address_Mother' => 'required',
         ];
     }
-    // messages Validation 
+    // messages Validation
     public function messages()
     {
         return [
-            'Email.required' => 'البريد الإلكتروني مطلوب.',
-            'Email.email' => 'يجب إدخال بريد إلكتروني صالح.',
-            'Password.required' => 'كلمة المرور مطلوبة.',
+            'email.required' => 'البريد الإلكتروني مطلوب.',
+            'email.email' => 'يجب إدخال بريد إلكتروني صالح.',
+            'password.required' => 'كلمة المرور مطلوبة.',
 
             'Name_Father.required' => 'اسم الأب مطلوب.',
             'Name_Father_en.required' => 'اسم الأب بالإنجليزية مطلوب.',
@@ -103,7 +103,7 @@ class AddPerent extends Component
         $this->validateOnly($propertyName);
     }
 
-    // حضظ البيانات 
+    // حضظ البيانات
     public function submitForm()
     {
 
@@ -112,8 +112,8 @@ class AddPerent extends Component
         $My_Parent = new MyPerent();
 
         // بيانات الأب
-        $My_Parent->Email = $this->Email;
-        $My_Parent->Password = Hash::make($this->Password);
+        $My_Parent->email = $this->Email;
+        $My_Parent->password = Hash::make($this->Password);
         $My_Parent->name_father = $this->Name_Father;
         $My_Parent->job_father = $this->Job_Father;
         $My_Parent->national_id_father = $this->National_ID_Father;
@@ -150,16 +150,16 @@ class AddPerent extends Component
         }
 
         toastr()->success('تم حفظ البيانات بنجاح');
-        // هيفضي كل البيانات عشان لو هضيف تاني 
+        // هيفضي كل البيانات عشان لو هضيف تاني
         $this->reset();
     }
 
-    // لو داس عليها هيروح ع اضافه ولي امر و هو هيكون واقف عن الجدول البيعرض فيه اولياء الامور 
+    // لو داس عليها هيروح ع اضافه ولي امر و هو هيكون واقف عن الجدول البيعرض فيه اولياء الامور
     public function showformadd()
     {
         $this->show_table = false;
     }
-    // عشان يعرض ب id 
+    // عشان يعرض ب id
     public function edit($id)
     {
         //يروح ع مكان البنضيف فيه بيانات
@@ -168,8 +168,8 @@ class AddPerent extends Component
         $My_Parent = MyPerent::findOrFail($id);
         $this->Parent_id = $id;
 
-        $this->Email = $My_Parent->Email;
-        $this->Password = $My_Parent->Password;
+        $this->email = $My_Parent->Email;
+        $this->password = $My_Parent->Password;
         $this->Name_Father = $My_Parent->name_father;
         $this->Job_Father = $My_Parent->job_father;
         $this->National_ID_Father = $My_Parent->national_id_father;
@@ -196,8 +196,8 @@ class AddPerent extends Component
         $My_Parent = MyPerent::findOrFail($this->Parent_id);
 
         // بيانات الأب
-        $My_Parent->Email = $this->Email;
-        $My_Parent->Password = Hash::make($this->Password);
+        $My_Parent->email = $this->Email;
+        $My_Parent->password = Hash::make($this->Password);
         $My_Parent->name_father = $this->Name_Father;
         $My_Parent->job_father = $this->Job_Father;
         $My_Parent->national_id_father = $this->National_ID_Father;

@@ -5,7 +5,7 @@ namespace App\Repository;
 
 use App\Models\Teacher;
 use App\Models\Specialization;
-
+use Illuminate\Support\Facades\Hash;
 
 
 class TeacherRepository implements TeacherRepositoryInterface
@@ -21,8 +21,7 @@ class TeacherRepository implements TeacherRepositoryInterface
 
     public function storeTeacher($request)
     {
-
-        return  Teacher::create($request);
+         return  Teacher::create($request);
     }
     public function editTeacher($id) {
         return Teacher::findOrFail($id);

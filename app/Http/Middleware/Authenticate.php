@@ -3,32 +3,19 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
-use Illuminate\Support\Facades\Request;
 
 class Authenticate extends Middleware
 {
-    /**
-     * Get the path the user should be redirected to when they are not authenticated.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return string|null
-     */
     protected function redirectTo($request)
     {
         if (!$request->expectsJson()) {
+            if ($request->is('student/dashboard') ||
+                $request->is('teacher/dashboard') ||
+                $request->is('perent/dashboard')) {
+                return route('selection');
+            }
 
-            if (Request::is( '/student/dashboard')) {
-                return route('selection');
-            }
-            elseif (Request::is( '/teacher/dashboard')) {
-                return route('selection');
-            }
-            elseif (Request::is( '/parent/dashboard')) {
-                return route('selection');
-            }
-            else {
-                return route('selection');
-            }
+            return route('selection'); // الافتراضي
         }
     }
 }
