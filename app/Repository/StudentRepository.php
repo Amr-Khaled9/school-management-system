@@ -32,7 +32,7 @@ class StudentRepository implements StudentsRepositoryInterface
 
        // dd($request->all());
         $students = new Student();
-        $students->name_ar = $request->name_ar;
+        $students->name = $request->name_ar;
         $students->name_en = $request->name_ar;
         $students->email = $request->email;
         $students->password = Hash::make($request->password);

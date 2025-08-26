@@ -10,7 +10,7 @@ class SubjectRepository implements SubjectRepositoryInterface
      public function store($request)
     {
         $subject = new Subject();
-        $subject->name =$request->Name_ar;
+        $subject->name =$request->name;
         $subject->grade_id =$request->Grade_id;
         $subject->classroom_id =$request->Class_id;
         $subject->teacher_id =$request->teacher_id;

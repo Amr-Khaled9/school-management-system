@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
  use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Teachers\StudendTeacherController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Attendences\AttendenceController;
@@ -24,12 +25,40 @@ use App\Http\Controllers\Students\ProcessingFeeController;
 use App\Http\Controllers\Students\StudentController;
 use App\Http\Controllers\Subjects\SubjectController;
 use App\Http\Controllers\Teachers\TeacherController;
+use App\Models\Teacher;
 
 
 
+//Route::get('/', [HomeController::class,'index'])->name('index');
 
-Route::get('/', [HomeController::class,'dashboard'])->name('dashboard');
 
+Route::get('/', function () {
+    return view('selection'); // صفحة اختيار النوع
+})->name('selection');
+
+// Login forms
+Route::get('/login/{type}', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login.show');
+Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
+Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+
+Route::prefix('web')->middleware('auth:web')->group(function() {
+    Route::view('/dashboard', 'dashboard')->name('web.dashboard');
+});
+Route::prefix('student')->middleware('auth:student')->group(function() {
+    Route::view('/dashboard', 'students.dashboard')->name('student.dashboard');
+});
+
+Route::prefix('teacher')->middleware('auth:teacher')->group(function() {
+      Route::view('/dashboard', 'teachers.dashboard')->name('teacher.dashboard');
+      Route::resource('students',StudendTeacherController::class);
+      Route::get('section',[StudendTeacherController::class,'section'])->name('sections');
+      Route::post('attendance',[StudendTeacherController::class,'attendance'])->name('attendance');
+      Route::post('attendance/edit/{test}',[StudendTeacherController::class,'attendanceEdit'])->name('attendance.edit');
+});
+
+Route::prefix('perent')->middleware('auth:perent')->group(function() {
+    Route::view('/dashboard', 'perents.dashboard')->name('perent.dashboard');
+});
 
 Route::resource('grade', GradeController::class);
 Route::resource('classroom', ClassroomController::class);
@@ -71,3 +100,7 @@ Route::view('/teacher/dashboard','teachers.dashboard');
 
 
 
+
+//Auth::routes();
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

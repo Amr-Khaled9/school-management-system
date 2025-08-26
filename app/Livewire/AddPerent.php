@@ -168,9 +168,9 @@ class AddPerent extends Component
         $My_Parent = MyPerent::findOrFail($id);
         $this->Parent_id = $id;
 
-        $this->email = $My_Parent->Email;
+        $this->Email = $My_Parent->email;
         $this->password = $My_Parent->Password;
-        $this->Name_Father = $My_Parent->name_father;
+        $this->Name_Father = $My_Parent->name;
         $this->Job_Father = $My_Parent->job_father;
         $this->National_ID_Father = $My_Parent->national_id_father;
         $this->Passport_ID_Father = $My_Parent->passport_iD_father;

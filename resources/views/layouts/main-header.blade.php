@@ -101,10 +101,23 @@
                     <div class="dropdown-menu dropdown-menu-right">
                         <div class="dropdown-header">
                             <div class="media">
+                                @php
+                                    // نجرب كل guard حتى نجد مستخدم مسجل دخول
+                                    $user = Auth::guard('teacher')->user()
+                                         ?? Auth::guard('student')->user()
+                                         ?? Auth::guard('perent')->user()
+                                         ?? Auth::user();
+                                @endphp
+
                                 <div class="media-body">
-                                    <h5 class="mt-0 mb-0">Michael Bean</h5>
-                                    <span>michael-bean@mail.com</span>
+                                    @if($user)
+                                        <h5 class="mt-0 mb-0">{{ $user->name }}</h5>
+                                        <span>{{ $user->email }}</span>
+                                    @else
+                                        <h5 class="mt-0 mb-0">Guest</h5>
+                                    @endif
                                 </div>
+
                             </div>
                         </div>
                         <div class="dropdown-divider"></div>
@@ -115,7 +128,17 @@
                                 class="badge badge-info">6</span> </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>Settings</a>
-                        <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>logout</a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
 
 
 

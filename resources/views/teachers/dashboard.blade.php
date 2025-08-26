@@ -38,8 +38,11 @@ preloader -->
         <div class="page-title">
             <div class="row">
                 <div class="col-sm-6">
-                    <h4 class="mb-0"> لوحة تحكم المعلم
+                    <h4 class="mb-0">    مرحبا بيك : {{ auth()->guard('teacher')->user()->name ?? 'Guest' }}
+
                     </h4>
+                    <br>
+
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right">
@@ -60,11 +63,15 @@ preloader -->
                             </div>
                             <div class="float-right text-right">
                                 <p class="card-text text-dark">عدد الطلاب</p>
-                                <h4>{{\App\Models\Student::count()}}</h4>
+                                @php
+                                    use App\Models\Teacher;
+                                    $ids = Teacher::findorFail(auth()->guard('teacher')->user()->id)->Sections()->pluck('section_id')
+                                @endphp
+                                <h4>{{\App\Models\Student::whereIn('section_id',$ids)->count()}}</h4>
                             </div>
                         </div>
                         <p class="text-muted pt-3 mb-0 mt-2 border-top">
-                            <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a href="{{route('student.index')}}" target="_blank"><span class="text-danger">عرض البيانات</span></a>
+                            <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a href="{{route('students.index')}}" target="_blank"><span class="text-danger">عرض البيانات</span></a>
                         </p>
                     </div>
                 </div>
@@ -79,56 +86,20 @@ preloader -->
                                     </span>
                             </div>
                             <div class="float-right text-right">
-                                <p class="card-text text-dark">عدد المعلمين</p>
-                                <h4>{{\App\Models\Teacher::count()}}</h4>
+                                <p class="card-text text-dark">عدد الاقسام</p>
+
+                                <h4>
+                                    {{$ids->count()}}
+                                </h4>
                             </div>
                         </div>
                         <p class="text-muted pt-3 mb-0 mt-2 border-top">
-                            <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a href="{{route('teacher.index')}}" target="_blank"><span class="text-danger">عرض البيانات</span></a>
+                            <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a href="{{route('sections')}}" target="_blank"><span class="text-danger">عرض البيانات</span></a>
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 mb-30">
-                <div class="card card-statistics h-100">
-                    <div class="card-body">
-                        <div class="clearfix">
-                            <div class="float-left">
-                                    <span class="text-success">
-                                        <i class="fas fa-user-tie highlight-icon" aria-hidden="true"></i>
-                                    </span>
-                            </div>
-                            <div class="float-right text-right">
-                                <p class="card-text text-dark">عدد اولياء الامور</p>
-                                <h4>{{\App\Models\MyPerent::count()}}</h4>
-                            </div>
-                        </div>
-                        <p class="text-muted pt-3 mb-0 mt-2 border-top">
-                            <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a href="{{route('add_parent')}}" target="_blank"><span class="text-danger">عرض البيانات</span></a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 mb-30">
-                <div class="card card-statistics h-100">
-                    <div class="card-body">
-                        <div class="clearfix">
-                            <div class="float-left">
-                                    <span class="text-primary">
-                                        <i class="fas fa-chalkboard highlight-icon" aria-hidden="true"></i>
-                                    </span>
-                            </div>
-                            <div class="float-right text-right">
-                                <p class="card-text text-dark">عدد الفصول الدراسية</p>
-                                <h4>{{\App\Models\Section::count()}}</h4>
-                            </div>
-                        </div>
-                        <p class="text-muted pt-3 mb-0 mt-2 border-top">
-                            <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a href="{{route('section.index')}}" target="_blank"><span class="text-danger">عرض البيانات</span></a>
-                        </p>
-                    </div>
-                </div>
-            </div>
+
         </div>
         <!-- Orders Status widgets-->
 

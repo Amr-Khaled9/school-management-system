@@ -2,19 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-
-
-    public function index()
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        return view('dashboard');
+        $this->middleware('auth');
     }
 
-    public function dashboard()
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
     {
         return view('dashboard');
     }

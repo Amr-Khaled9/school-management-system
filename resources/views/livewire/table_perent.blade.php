@@ -22,8 +22,8 @@
             <tr>
                 <?php $i++; ?>
                 <td>{{ $i }}</td>
-                <td>{{ $my_parent->Email }}</td>
-                <td>{{ $my_parent->name_father }}</td>
+                <td>{{ $my_parent->email }}</td>
+                <td>{{ $my_parent->name }}</td>
                 <td>{{ $my_parent->national_id_father }}</td>
                 <td>{{ $my_parent->passport_iD_father }}</td>
                 <td>{{ $my_parent->phone_father }}</td>
