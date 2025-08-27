@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
  use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Teachers\QuizzeTeacherController;
 use App\Http\Controllers\Teachers\StudendTeacherController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -51,6 +52,7 @@ Route::prefix('student')->middleware('auth:student')->group(function() {
 Route::prefix('teacher')->middleware('auth:teacher')->group(function() {
       Route::view('/dashboard', 'teachers.dashboard')->name('teacher.dashboard');
       Route::resource('students',StudendTeacherController::class);
+      Route::resource('quizzes',QuizzeTeacherController::class);
       Route::get('section',[StudendTeacherController::class,'section'])->name('sections');
       Route::post('attendance',[StudendTeacherController::class,'attendance'])->name('attendance');
       Route::post('attendance/edit/{test}',[StudendTeacherController::class,'attendanceEdit'])->name('attendance.edit');

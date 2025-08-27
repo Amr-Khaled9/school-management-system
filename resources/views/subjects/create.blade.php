@@ -1,7 +1,6 @@
 @extends('layouts.master')
 @section('css')
-    @toastr_css
-    @section('title')
+     @section('title')
         اضافة مادة دراسية
     @stop
 @endsection
