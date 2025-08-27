@@ -54,6 +54,8 @@ Route::prefix('teacher')->middleware('auth:teacher')->group(function() {
       Route::get('section',[StudendTeacherController::class,'section'])->name('sections');
       Route::post('attendance',[StudendTeacherController::class,'attendance'])->name('attendance');
       Route::post('attendance/edit/{test}',[StudendTeacherController::class,'attendanceEdit'])->name('attendance.edit');
+      Route::get('attendance/report',[StudendTeacherController::class,'attendanceReport'])->name('attendance.report');
+      Route::post('attendance/Seacrh',[StudendTeacherController::class,'attendanceSearch'])->name('attendance.search');
 });
 
 Route::prefix('perent')->middleware('auth:perent')->group(function() {

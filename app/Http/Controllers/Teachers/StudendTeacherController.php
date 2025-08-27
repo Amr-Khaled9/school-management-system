@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Teachers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AttendanceSearchRequest;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Grade;
@@ -53,8 +54,7 @@ class StudendTeacherController extends Controller
 
     public function attendanceEdit(Request $request)
     {
-//        dd($request->all());
-             $date = date('Y-m-d');
+              $date = date('Y-m-d');
             $student_id = Attendence::where('attendence_date',$date)->where('student_id',$request->id)->first();
             if( $request->attendence == 'presence' ) {
                 $attendence_status = true;
@@ -69,6 +69,66 @@ class StudendTeacherController extends Controller
 
 
     }
+    public function attendanceReport()
+    {
+        $ids= DB::table('teacher_section')->where('teacher_id',auth()->guard('teacher')->user()->id)->pluck('section_id');
+        $students = Student::whereIn('section_id',$ids)->get();
+        return view('teachers.student.attandance_report',compact('students'));
+    }
+
+    public function attendanceSearch(AttendanceSearchRequest $request)
+    {
+        $ids= DB::table('teacher_section')->where('teacher_id',auth()->guard('teacher')->user()->id)->pluck('section_id');
+        $students = Student::whereIn('section_id',$ids)->get();
+        if($request->student_id == 0 ){
+            $students_between = Attendence::whereBetween('attendence_date',[$request->from,$request->to])->get();
+            return view('teachers.student.attandance_report',compact('students_between','students'));
+
+        }else{
+
+             $students_between = Attendence::whereBetween('attendence_date',[$request->from,$request->to])
+                 ->where('student_id',$request->student_id)->get();
+            return view('teachers.student.attandance_report',compact('students_between','students'));
+
+        }
+     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function create()
     {
         //
