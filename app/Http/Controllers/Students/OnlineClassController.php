@@ -16,8 +16,19 @@ class OnlineClassController extends Controller
 
     public function index()
     {
-        $online_classes = Online_class::all();
-        return view('online_class.index',compact('online_classes'));
+         if (auth('teacher')->check()) {
+            $user = auth('teacher')->user();
+        } elseif (auth('student')->check()) {
+            $user = auth('student')->user();
+        } elseif (auth('perent')->check()) {
+            $user = auth('perent')->user();
+        } else {
+            $user = auth()->user();
+        }
+
+        $online_classes = Online_class::where('created_by', $user->email)->get();
+
+        return view('online_class.index', compact('online_classes'));
     }
 
     public function create()
@@ -28,6 +39,15 @@ class OnlineClassController extends Controller
 
     public function store(OnlineClassStoreRequest $request,ZoomService $zoom)
     {
+        if (auth('teacher')->check()) {
+        $users = auth('teacher')->user();
+    } elseif (auth('student')->check()) {
+        $users = auth('student')->user();
+    } elseif (auth('perent')->check()) {
+        $users = auth('perent')->user();
+    } else {
+        $users = auth()->user();
+    }
         $user = User::find(2);
     $token =$zoom->generateAccessToken();
     $meeting = $zoom->createMeeting($request->topic,$request->start_time,$request->duration,2,$token);
@@ -35,7 +55,7 @@ class OnlineClassController extends Controller
             'grade_id'     => $request->Grade_id,
             'classroom_id' => $request->Classroom_id,
             'section_id'   => $request->section_id,
-            'user_id'      => $user->id,
+            'created_by'   => $users->email,
             'meeting_id'   => $meeting['id'],
             'topic'        => $meeting['topic'],
             'duration'      =>$request->duration,
@@ -52,20 +72,6 @@ class OnlineClassController extends Controller
 
     }
 
-    public function show(string $id)
-    {
-        //
-    }
-
-    public function edit(string $id)
-    {
-        //
-    }
-
-    public function update(Request $request, string $id)
-    {
-        //
-    }
 
     public function destroy(Request $request)
     {

@@ -72,13 +72,13 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <p> {{ trans('My_Classes_trans.Warning_Grade') }} <span class="text-danger">{{$question->title}}</span></p>
+                                                                <p> المرحلة الدراسية<span class="text-danger">{{$question->title}}</span></p>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
-                                                                            data-dismiss="modal">{{ trans('My_Classes_trans.Close') }}</button>
-                                                                    <button type="submit" class="btn btn-danger">{{ trans('My_Classes_trans.submit') }}</button>
+                                                                            data-dismiss="modal">الغاء</button>
+                                                                    <button type="submit" class="btn btn-danger">تاكيد</button>
                                                                 </div>
                                                             </div>
                                                         </div>

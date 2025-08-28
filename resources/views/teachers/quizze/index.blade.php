@@ -82,9 +82,9 @@
                                                             <div class="modal-footer">
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
-                                                                            data-dismiss="modal">{{ trans('My_Classes_trans.Close') }}</button>
+                                                                            data-dismiss="modal">الغاء</button>
                                                                     <button type="submit"
-                                                                            class="btn btn-danger">{{ trans('My_Classes_trans.submit') }}</button>
+                                                                            class="btn btn-danger">تاكيد</button>
                                                                 </div>
                                                             </div>
                                                         </div>

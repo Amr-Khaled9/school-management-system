@@ -38,7 +38,7 @@ preloader -->
         <div class="page-title">
             <div class="row">
                 <div class="col-sm-6">
-                    <h4 class="mb-0">    مرحبا بيك : {{ auth()->guard('teacher')->user()->name ?? 'Guest' }}
+                    <h4 class="mb-0">    مرحبا بك : {{ auth()->guard('teacher')->user()->name ?? 'Guest' }}
 
                     </h4>
                     <br>
@@ -247,42 +247,6 @@ preloader -->
                                 </div>
 
                                 {{--sections Table--}}
-                                <div class="tab-pane fade" id="fee_invoices" role="tabpanel" aria-labelledby="fee_invoices-tab">
-                                    <div class="table-responsive mt-15">
-                                        <table style="text-align: center" class="table center-aligned-table table-hover mb-0">
-                                            <thead>
-                                            <tr  class="table-info text-danger">
-                                                <th>#</th>
-                                                <th>تاريخ الفاتورة</th>
-                                                <th>اسم الطالب</th>
-                                                <th>المرحلة الدراسية</th>
-                                                <th>الصف الدراسي</th>
-                                                 <th>نوع الرسوم</th>
-                                                <th>المبلغ</th>
-                                                <th>تاريخ الاضافة</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @forelse(\App\Models\Fees_invoice::latest()->take(10)->get() as $section)
-                                                <tr>
-                                                    <td>{{$loop->iteration}}</td>
-                                                    <td>{{$section->invoice_date}}</td>
-                                                    <td>{{$section->student->name_ar}}</td>
-                                                    <td>{{$section->grade->name}}</td>
-                                                    <td>{{$section->classroom->name}}</td>
-                                                     <td>{{$section->fee->title_ar}}</td>
-                                                    <td>{{$section->fee->amount}}</td>
-                                                    <td class="text-success">{{$section->created_at}}</td>
-                                                </tr>
-                                            @empty
-                                                <tr>
-                                                    <td class="alert-danger" colspan="9">لاتوجد بيانات</td>
-                                                </tr>
-                                            @endforelse
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
 
                             </div>
 

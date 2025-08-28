@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
  use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Teachers\ProfileTeacherController;
 use App\Http\Controllers\Teachers\QuestionTeacherController;
 use App\Http\Controllers\Teachers\QuizzeTeacherController;
 use App\Http\Controllers\Teachers\StudendTeacherController;
@@ -31,11 +32,10 @@ use App\Models\Teacher;
 
 
 
-//Route::get('/', [HomeController::class,'index'])->name('index');
 
 
 Route::get('/', function () {
-    return view('selection'); // صفحة اختيار النوع
+    return view('selection');
 })->name('selection');
 
 // Login forms
@@ -60,6 +60,8 @@ Route::prefix('teacher')->middleware('auth:teacher')->group(function() {
       Route::post('attendance/edit/{test}',[StudendTeacherController::class,'attendanceEdit'])->name('attendance.edit');
       Route::get('attendance/report',[StudendTeacherController::class,'attendanceReport'])->name('attendance.report');
       Route::post('attendance/Seacrh',[StudendTeacherController::class,'attendanceSearch'])->name('attendance.search');
+      Route::get('profile',[ ProfileTeacherController::class,'index'])->name('profile.teacher');
+      Route::post('profile/update/{id}',[ ProfileTeacherController::class,'update'])->name('update.teacher');
 });
 
 Route::prefix('perent')->middleware('auth:perent')->group(function() {
@@ -104,9 +106,3 @@ Route::view('table_perent', 'livewire.table_perent');
 
 Route::view('/teacher/dashboard','teachers.dashboard');
 
-
-
-
-//Auth::routes();
-
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
