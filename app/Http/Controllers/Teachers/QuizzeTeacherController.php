@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Quizze;
 use App\Models\Grade;
 use App\Models\Subject;
+use App\Models\Question;
 
 class QuizzeTeacherController extends Controller
 {
@@ -26,12 +27,6 @@ class QuizzeTeacherController extends Controller
         return view('teachers.quizze.create',compact('grades','subjects'));
     }
 
-//"name_ar" => "الصف الدراسي الاول"
-//"name_en" => "الصف الدراسي الاول"
-//"subject_id" => "3"
-//"Grade_id" => "1"
-//"Classroom_id" => "1"
-//"section_id" => "1"
     public function store(Request $request)
     {
 
@@ -48,9 +43,12 @@ class QuizzeTeacherController extends Controller
 
      }
 
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $questions = Question::where('quizze_id',$id)->get();
+        $quizz = Quizze::findOrFail($id);
+        return view('teachers.question.index',compact('questions','quizz'));
+
     }
 
     public function edit(  $id)
