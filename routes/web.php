@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
  use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Students\ExamsController;
 use App\Http\Controllers\Teachers\ProfileTeacherController;
 use App\Http\Controllers\Teachers\QuestionTeacherController;
 use App\Http\Controllers\Teachers\QuizzeTeacherController;
@@ -48,6 +49,7 @@ Route::prefix('web')->middleware('auth:web')->group(function() {
 });
 Route::prefix('student')->middleware('auth:student')->group(function() {
     Route::view('/dashboard', 'students.dashboard')->name('student.dashboard');
+    Route::resource('exams',ExamsController::class);
 });
 
 Route::prefix('teacher')->middleware('auth:teacher')->group(function() {
