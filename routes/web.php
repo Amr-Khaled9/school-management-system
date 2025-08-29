@@ -64,6 +64,8 @@ Route::prefix('teacher')->middleware('auth:teacher')->group(function() {
       Route::post('attendance/Seacrh',[StudendTeacherController::class,'attendanceSearch'])->name('attendance.search');
       Route::get('profile',[ ProfileTeacherController::class,'index'])->name('profile.teacher');
       Route::post('profile/update/{id}',[ ProfileTeacherController::class,'update'])->name('update.teacher');
+      Route::get('students/pass/{id}',[StudendTeacherController::class ,'quizzePass'])->name('student.quizze');
+      Route::post('students/repeat/{id}',[StudendTeacherController::class ,'repeatQuizze'])->name('repeat.quizze');
 });
 
 Route::prefix('perent')->middleware('auth:perent')->group(function() {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Teachers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AttendanceSearchRequest;
+use App\Models\Degree;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Grade;
@@ -91,73 +92,53 @@ class StudendTeacherController extends Controller
             return view('teachers.student.attandance_report',compact('students_between','students'));
 
         }
+
+
      }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public function create()
-    {
-        //
+    public function quizzePass($id){
+        $degrees = Degree::where('quizze_id',$id)->get();
+        return view('teachers.quizze.pass',compact('degrees'));
     }
 
-    public function store(Request $request)
+    public function repeatQuizze(Request $request)
     {
-        //
+        Degree::where('student_id' , $request->student_id)->where('quizze_id',$request->quizze_id)->delete();
+        toastr()->success('تم فتح الامتحان مره اخري');
+        return back();
     }
 
 
-    public function show(string $id)
-    {
-        //
-    }
-
-    public function edit(string $id)
-    {
-        //
-    }
 
 
-    public function update(Request $request, string $id)
-    {
-        //
-    }
 
-    public function destroy(string $id)
-    {
-        //
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
