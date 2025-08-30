@@ -27,14 +27,14 @@
 
         <!-- تقرير المالية-->
         <li>
-            <a href=" "><i class="fas fa-book-open"></i><span
+            <a href="{{route('sons.fee')}} "><i class="fas fa-book-open"></i><span
                     class="right-nav-text">تقرير المالية</span></a>
         </li>
 
 
         <!-- Settings-->
         <li>
-            <a href=" "><i class="fas fa-id-card-alt"></i><span
+            <a href="{{route('perent.student')}} "><i class="fas fa-id-card-alt"></i><span
                     class="right-nav-text">الملف الشخصي</span></a>
         </li>
 

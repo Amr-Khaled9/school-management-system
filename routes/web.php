@@ -78,6 +78,10 @@ Route::prefix('perent')->middleware('auth:perent')->group(function() {
     Route::get('children/result/{id}',[ PerentController::class,'result'])->name('sons.results');
     Route::get('children/attendance',[ PerentController::class,'attendance'])->name('sons.attendance');
     Route::post('children/attendance/search',[ PerentController::class,'attendanceSearch'])->name('sons.attendance.search');
+    Route::get('fee',[ PerentController::class,'fee'])->name('sons.fee');
+    Route::get('fee\receipt\{id}',[ PerentController::class,'receipt'])->name('sons.receipt');
+    Route::get('profile',[PerentController::class,'viewProfile'])->name('perent.student');
+    Route::post('profile/update/{id}',[PerentController::class,'updateProfile'])->name('update.perent');
 });
 
 Route::resource('grade', GradeController::class);

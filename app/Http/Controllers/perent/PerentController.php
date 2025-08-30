@@ -7,6 +7,11 @@ use App\Models\Degree;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Attendence;
+use App\Models\Fees_invoice;
+use App\Models\Receipt_Student;
+use App\Models\MyPerent;
+use Illuminate\Support\Facades\Hash;
+
 use Illuminate\Support\Facades\DB;
 
 
@@ -66,5 +71,53 @@ class PerentController extends Controller
             return view('perents.attendance', compact('Students', 'students'));
 
         }
+    }
+
+    public function fee()
+    {
+        $students = Student::where('parent_id',auth()->guard('perent')->user()->id)->pluck('id') ;
+        $Fee_invoices =Fees_invoice::whereIn('student_id',$students)->get();
+        return view('perents.fee',compact('students','Fee_invoices'));
+
+    }
+    public function receipt($id)
+    {
+        $student = Student::where('id',$id)->where('parent_id',auth()->guard('perent')->user()->id)->first();
+        if(empty($student )){
+            toastr()->error('لا يوجد هذا الطالب');
+            return redirect()->route('sons.fee');
+        }
+        $receipt_students= Receipt_Student::where('student_id',$student->id)->get();
+        if ($receipt_students->isEmpty()) {
+            toastr()->error('لا يوجد مدفوعات');
+            return redirect()->route('sons.fee');
+        }
+        return view('perents.receipt',compact('receipt_students'));
+
+    }
+
+    public function viewProfile()
+    {
+
+        $information =  auth('perent')->user();
+        return view('perents.profile',compact('information'));
+    }
+    public function updateProfile(Request $request)
+    {
+        $teacher =MyPerent::where('id',$request->id)->first();
+
+        if(!empty($request->password)){
+            $teacher->name = $request->Name_ar;
+            $passwordE= Hash::make($request->password);
+            $teacher->password =  $passwordE;
+            $teacher->save();
+        }else{
+            $teacher->name = $request->Name_ar;
+            $teacher->save();
+
+        }
+
+        toastr()->success('تم تعديل البيانات الشخصية');
+        return redirect()->back();
     }
 }
