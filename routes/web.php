@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
- use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\perent\PerentController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Students\ExamsController;
 use App\Http\Controllers\Students\ProfileStudentController;
 use App\Http\Controllers\Teachers\ProfileTeacherController;
@@ -73,6 +74,10 @@ Route::prefix('teacher')->middleware('auth:teacher')->group(function() {
 
 Route::prefix('perent')->middleware('auth:perent')->group(function() {
     Route::view('/dashboard', 'perents.dashboard')->name('perent.dashboard');
+    Route::get('children',[ PerentController::class,'index'])->name('sons.index');
+    Route::get('children/result/{id}',[ PerentController::class,'result'])->name('sons.results');
+    Route::get('children/attendance',[ PerentController::class,'attendance'])->name('sons.attendance');
+    Route::post('children/attendance/search',[ PerentController::class,'attendanceSearch'])->name('sons.attendance.search');
 });
 
 Route::resource('grade', GradeController::class);
