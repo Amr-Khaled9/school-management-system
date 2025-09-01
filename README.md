@@ -24,16 +24,16 @@ A **School Management System** built with **Laravel** that helps manage students
 ## 🖼️ Screenshots
 
 ### 🛡 Admin / Dashboard
-<img src="./main.png" alt="Admin Dashboard" width="800"/>
+<img src="images../main.png" alt="Admin Dashboard" width="800"/>
 
 ###  Student Dashboard
-<img src="./student.png" alt="Student Dashboard" width="800"/>
+<img src="images../student.png" alt="Student Dashboard" width="800"/>
 
 ###  Parent Dashboard
-<img src="./parent.png" alt="Parent Dashboard" width="800"/>
+<img src="images../parent.png" alt="Parent Dashboard" width="800"/>
 
 ###  Teacher Dashboard
-<img src="./teacher.png" alt="Teacher Dashboard" width="800"/>
+<img src="images./teacher.png" alt="Teacher Dashboard" width="800"/>
 
 ---
 
