@@ -4,7 +4,7 @@
   </a>
 </p>
 
-# 📚 School Management System
+#  School Management System
 
 A **School Management System** built with **Laravel** that helps manage students, teachers, parents, and administrators through a simple and user-friendly dashboard.  
 
@@ -21,9 +21,9 @@ A **School Management System** built with **Laravel** that helps manage students
 
 ---
 
-## 🖼️ Screenshots
+##  Screenshots
 
-### 🛡 Admin / Dashboard
+###  Admin / Dashboard
 <img src="images/main.png" alt="Admin Dashboard" width="800"/>
 
 ###  Student Dashboard
