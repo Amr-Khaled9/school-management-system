@@ -39,7 +39,7 @@ preloader -->
         <div class="page-title" >
             <div class="row">
                 <div class="col-sm-6" >
-                    <h4 class="mb-0">    مرحبا بك : {{ auth()->guard('perent')->user()->name ?? 'Guest' }}
+                    <h4 class="mb-0">  لوحة تحكم ولي الامر : {{ auth()->guard('perent')->user()->name ?? 'Guest' }}
                 </div><br><br>
                 <div class="col-sm-6">
                     <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right">
@@ -50,12 +50,13 @@ preloader -->
 
         <section style="background-color: #eee;">
             <div class="container py-5">
-                <div class="row justify-content-center">
+                <div class="d-flex justify-content-center mt-4">
                     @php
                         use App\Models\Student;
                         $sons = Student::where('parent_id',auth()->guard('perent')->user()->id)->get() @endphp
                     @foreach($sons as $son)
-                        <div class="col-md-8 col-lg-6 col-xl-4">
+
+                            <div class="col-md-6 col-lg-4 col-xl-3">
                             <a href="">
                                 <div class="card text-black">
                                     <img src="{{URL::asset('assets/images/my_son.png')}}"/>

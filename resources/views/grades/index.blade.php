@@ -14,7 +14,7 @@
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                <li class="breadcrumb-item"><a href="#" class="default-color">Home</a></li>
+                <li class="breadcrumb-item"><a href="#" class="default-color">#</a></li>
                 <li class="breadcrumb-item active">المراحل الدراسية</li>
             </ol>
         </div>
@@ -42,7 +42,7 @@
     <div class="col-xl-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-                <button type="button" class="button x-small" data-toggle="modal" data-target="#exampleModal">
+                <button class="btn btn-success btn-sm" role="button" type="button"   data-toggle="modal" data-target="#exampleModal">
                     اضافة مرحلة
                 </button>
                 <br><br>
@@ -179,7 +179,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <p> {{$grade->name}} :سيتم حذف المرحلة</p>  
+                            <p> {{$grade->name}} :سيتم حذف المرحلة</p>
                             <input type="hidden" name="id" value="{{ $grade->id }}">
                         </div>
                         <div class="modal-footer">

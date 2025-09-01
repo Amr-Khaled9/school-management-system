@@ -30,8 +30,11 @@
                     <div class="col-xl-12 mb-30">
                         <div class="card card-statistics h-100">
                             <div class="card-body">
+                                @if(auth()->guard('web')->check() || auth()->guard('teacher')->check())
                                 <a href="{{route('subject.create')}}" class="btn btn-success btn-sm" role="button"
-                                   aria-pressed="true">اضافة مادة جديدة</a><br><br>
+                                   aria-pressed="true">اضافة مادة جديدة</a>
+                                @endif
+                                    <br><br>
                                 <div class="table-responsive">
                                     <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
                                            data-page-length="50"
@@ -43,7 +46,9 @@
                                             <th>المرحلة الدراسية</th>
                                             <th>الصف الدراسي</th>
                                             <th>اسم المعلم</th>
+                                            @if(auth()->guard('web')->check() || auth()->guard('teacher')->check())
                                             <th>العمليات</th>
+                                            @endif
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -54,10 +59,12 @@
                                                 <td>{{$subject->grade->name}}</td>
                                                 <td>{{$subject->classroom->name}}</td>
                                                 <td>{{$subject->teacher->name}}</td>
+                                                @if(auth()->guard('web')->check() || auth()->guard('teacher')->check())
                                                 <td>
                                                     <a href="{{route('subject.edit',$subject->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
                                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_subject{{ $subject->id }}" title="حذف"><i class="fa fa-trash"></i></button>
                                                 </td>
+                                                @endif
                                             </tr>
 
                                             <div class="modal fade" id="delete_subject{{$subject->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

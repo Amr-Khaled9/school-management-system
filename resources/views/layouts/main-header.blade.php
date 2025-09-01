@@ -3,7 +3,7 @@
         <nav class="admin-header navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <!-- logo -->
             <div class="text-left navbar-brand-wrapper">
-                <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo-dark.png"
+                <a class="navbar-brand brand-logo" href="index.html"><img src="{{ asset('assets/images/logo_image.png') }}"
                         alt=""></a>
                 <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-icon-dark.png"
                         alt=""></a>
@@ -107,8 +107,7 @@
                         <div class="dropdown-header">
                             <div class="media">
                                 @php
-                                    // نجرب كل guard حتى نجد مستخدم مسجل دخول
-                                    $user = Auth::guard('teacher')->user()
+                                     $user = Auth::guard('teacher')->user()
                                          ?? Auth::guard('student')->user()
                                          ?? Auth::guard('perent')->user()
                                          ?? Auth::user();
@@ -126,18 +125,13 @@
                             </div>
                         </div>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"><i class="text-secondary ti-reload"></i>Activity</a>
-                        <a class="dropdown-item" href="#"><i class="text-success ti-email"></i>Messages</a>
-                        <a class="dropdown-item" href="#"><i class="text-warning ti-user"></i>Profile</a>
-                        <a class="dropdown-item" href="#"><i class="text-dark ti-layers-alt"></i>Projects <span
-                                class="badge badge-info">6</span> </a>
+
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>Settings</a>
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                {{ __('تسجيل الخروج') }}
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

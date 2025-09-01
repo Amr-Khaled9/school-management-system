@@ -39,7 +39,7 @@
                                             <div class="col">
                                                 <label for="Name" class="mr-sm-2">اسم الطالب</label>
                                                 <select class="fancyselect" name="student_id" required>
-                                                    <option value="{{ $student->id }}">{{ $student->name_ar }}</option>
+                                                    <option value="{{ $student->id }}">{{ $student->name }}</option>
                                                 </select>
                                             </div>
 

@@ -38,7 +38,7 @@
                                         @foreach($ProcessingFees as $ProcessingFee)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{$ProcessingFee->student->name_ar}}</td>
+                                                <td>{{$ProcessingFee->student->name}}</td>
                                                 <td>{{ number_format($ProcessingFee->amount, 2) }}</td>
                                                 <td>{{$ProcessingFee->description}}</td>
                                                 <td>

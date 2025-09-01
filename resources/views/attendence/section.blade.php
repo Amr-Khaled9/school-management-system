@@ -17,7 +17,7 @@
         <div class="col-md-12 mb-30">
             <div class="card card-statistics h-100">
                 <div class="card-body">
-                    <a class="button x-small" href="#" data-toggle="modal" data-target="#exampleModal">
+                    <a class="btn btn-success btn-sm" role="button" href="#" data-toggle="modal" data-target="#exampleModal">
                         اضافة</a>
                 </div>
 

@@ -38,7 +38,7 @@ preloader -->
         <div class="page-title">
             <div class="row">
                 <div class="col-sm-6">
-                    <h4 class="mb-0">    مرحبا بك : {{ auth()->guard('teacher')->user()->name ?? 'Guest' }}
+                    <h4 class="mb-0">    لوحة تحكم المعلم : {{ auth()->guard('teacher')->user()->name ?? 'Guest' }}
 
                     </h4>
                     <br>
@@ -103,163 +103,26 @@ preloader -->
         </div>
         <!-- Orders Status widgets-->
 
-        <div class="row">
+         <div class="container mt-4">
+            <div class="row">
+                <!-- Chart 1 -->
+                <div class="col-md-6">
+                    <div class="card shadow p-3">
+                        <h5 class="text-center">نتائج الطلاب</h5>
+                        <canvas id="studentsChart"></canvas>
+                    </div>
+                </div>
 
-            <div  style="height: 400px;" class="col-xl-12 mb-30">
-                <div class="card card-statistics h-100">
-                    <div class="card-body">
-                        <div class="tab nav-border" style="position: relative;">
-                            <div class="d-block d-md-flex justify-content-between">
-                                <div class="d-block w-100">
-                                    <h5 style="font-family: 'Cairo', sans-serif" class="card-title">اخر العمليات علي النظام</h5>
-                                </div>
-                                <div class="d-block d-md-flex nav-tabs-custom">
-                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-
-                                        <li class="nav-item">
-                                            <a class="nav-link active show" id="students-tab" data-toggle="tab"
-                                               href="#students" role="tab" aria-controls="students"
-                                               aria-selected="true"> الطلاب</a>
-                                        </li>
-
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="teachers-tab" data-toggle="tab" href="#teachers"
-                                               role="tab" aria-controls="teachers" aria-selected="false">المعلمين
-                                            </a>
-                                        </li>
-
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="parents-tab" data-toggle="tab" href="#parents"
-                                               role="tab" aria-controls="parents" aria-selected="false">اولياء الامور
-                                            </a>
-                                        </li>
-
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="fee_invoices-tab" data-toggle="tab" href="#fee_invoices"
-                                               role="tab" aria-controls="fee_invoices" aria-selected="false">الفواتير
-                                            </a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tab-content" id="myTabContent">
-
-                                {{--students Table--}}
-                                <div class="tab-pane fade active show" id="students" role="tabpanel" aria-labelledby="students-tab">
-                                    <div class="table-responsive mt-15">
-                                        <table style="text-align: center" class="table center-aligned-table table-hover mb-0">
-                                            <thead>
-                                            <tr  class="table-info text-danger">
-                                                <th>#</th>
-                                                <th>اسم الطالب</th>
-                                                <th>البريد الالكتروني</th>
-                                                <th>النوع</th>
-                                                <th>المرحلة الدراسية</th>
-                                                <th>الصف الدراسي</th>
-                                                <th>القسم</th>
-                                                <th>تاريخ الاضافة</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @forelse(\App\Models\Student::latest()->take(5)->get() as $student)
-                                                <tr>
-                                                    <td>{{$loop->iteration}}</td>
-                                                    <td>{{$student->name_ar}}</td>
-                                                    <td>{{$student->email}}</td>
-                                                    <td>{{$student->gender}}</td>
-                                                    <td>{{$student->grade->name}}</td>
-                                                    <td>{{$student->classroom->name}}</td>
-                                                    <td>{{$student->section->name}}</td>
-                                                    <td class="text-success">{{$student->created_at}}</td>
-                                                    @empty
-                                                        <td class="alert-danger" colspan="8">لاتوجد بيانات</td>
-                                                </tr>
-                                            @endforelse
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                {{--teachers Table--}}
-                                <div class="tab-pane fade" id="teachers" role="tabpanel" aria-labelledby="teachers-tab">
-                                    <div class="table-responsive mt-15">
-                                        <table style="text-align: center" class="table center-aligned-table table-hover mb-0">
-                                            <thead>
-                                            <tr  class="table-info text-danger">
-                                                <th>#</th>
-                                                <th>اسم المعلم</th>
-                                                <th>النوع</th>
-                                                <th>تاريخ التعين</th>
-                                                <th>التخصص</th>
-                                                <th>تاريخ الاضافة</th>
-                                            </tr>
-                                            </thead>
-
-                                            @forelse(\App\Models\Teacher::latest()->take(5)->get() as $teacher)
-                                                <tbody>
-                                                <tr>
-                                                    <td>{{$loop->iteration}}</td>
-                                                    <td>{{$teacher->name}}</td>
-                                                    <td>{{$teacher->gender}}</td>
-                                                    <td>{{$teacher->joining_date}}</td>
-                                                    <td>{{$teacher->specialization->name}}</td>
-                                                    <td class="text-success">{{$teacher->created_at}}</td>
-                                                    @empty
-                                                        <td class="alert-danger" colspan="8">لاتوجد بيانات</td>
-                                                </tr>
-                                                </tbody>
-                                            @endforelse
-                                        </table>
-                                    </div>
-                                </div>
-
-                                {{--parents Table--}}
-                                <div class="tab-pane fade" id="parents" role="tabpanel" aria-labelledby="parents-tab">
-                                    <div class="table-responsive mt-15">
-                                        <table style="text-align: center" class="table center-aligned-table table-hover mb-0">
-                                            <thead>
-                                            <tr  class="table-info text-danger">
-                                                <th>#</th>
-                                                <th>اسم ولي الامر</th>
-                                                <th>البريد الالكتروني</th>
-                                                <th>رقم الهوية</th>
-                                                <th>رقم الهاتف</th>
-                                                <th>تاريخ الاضافة</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @forelse(\App\Models\MyPerent::latest()->take(5)->get() as $parent)
-                                                <tr>
-                                                    <td>{{$loop->iteration}}</td>
-                                                    <td>{{$parent->name_father}}</td>
-                                                    <td>{{$parent->Email}}</td>
-                                                    <td>{{$parent->national_id_father}}</td>
-                                                    <td>{{$parent->phone_father}}</td>
-                                                    <td class="text-success">{{$parent->created_at}}</td>
-                                                    @empty
-                                                        <td class="alert-danger" colspan="8">لاتوجد بيانات</td>
-                                                </tr>
-                                            @endforelse
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                {{--sections Table--}}
-
-                            </div>
-
+                <div class="col-md-6">
+                    <div class="card shadow p-3 text-center">
+                        <h5 class="text-center">نسبة الحضور</h5>
+                        <div style="max-width:250px; margin:0 auto;">
+                            <canvas id="attendanceChart"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-{{--        <livewire:calendar />--}}
-        <!--=================================
-wrapper -->
-
         <!--=================================
 footer -->
 

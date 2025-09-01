@@ -20938,7 +20938,7 @@ ul.list-unstyled li {
 
 /*header*/
 .admin-header {
-  background: #ffffff;
+  background:   #0d1b2a;
   -webkit-box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.1);
   box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.1); }
@@ -20980,11 +20980,15 @@ ul.list-unstyled li {
     display: none; }
 
 .admin-header .navbar-brand {
-  height: auto;
-  padding: 9px 0; }
-  .admin-header .navbar-brand img {
-    height: 30px; }
-
+    height: 60px;   /* ده ارتفاع البار */
+    display: flex;
+    align-items: center; /* يخلي الصورة متوسّطة عموديًا */
+    padding: 0 10px;     /* padding بسيط من الجنب */
+}
+.admin-header .navbar-brand img {
+    max-height: 70px;  /* تتحكم في أكبر حجم ممكن للصورة */
+    width: auto;
+}
 .admin-header .search .search-btn {
   color: #6c757d;
   padding: 14px;

@@ -145,7 +145,7 @@
                                     <select class="custom-select mr-sm-2" name="parent_id">
                                         <option selected disabled>اختار...</option>
                                        @foreach($parents as $parent)
-                                            <option value="{{ $parent->id }}">{{ $parent->name_father }}</option>
+                                            <option value="{{ $parent->id }}">{{ $parent->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

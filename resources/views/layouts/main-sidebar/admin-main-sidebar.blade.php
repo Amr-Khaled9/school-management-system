@@ -2,19 +2,12 @@
     <ul class="nav navbar-nav side-menu" id="sidebarnav">
         <!-- menu item Dashboard-->
         <li>
-            <a href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard">
-                <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">لوحة التحكم</span>
+            <a href="/web/dashboard">
+                <div class="pull-left"><i class="ti-home"></i><span
+                        class="right-nav-text">الرئيسية</span>
                 </div>
-                <div class="pull-right"><i class="ti-plus"></i></div>
                 <div class="clearfix"></div>
             </a>
-            <ul id="dashboard" class="collapse" data-parent="#sidebarnav">
-                <li> <a href="index.html">Dashboard 01</a> </li>
-                <li> <a href="index-02.html">Dashboard 02</a> </li>
-                <li> <a href="index-03.html">Dashboard 03</a> </li>
-                <li> <a href="index-04.html">Dashboard 04</a> </li>
-                <li> <a href="index-05.html">Dashboard 05</a> </li>
-            </ul>
         </li>
         <!-- menu title -->
         <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">القائمة</li>
@@ -27,7 +20,7 @@
                 <div class="clearfix"></div>
             </a>
             <ul id="elements" class="collapse" data-parent="#sidebarnav">
-                <li><a href="{{ route('grade.index') }}">قائمة المراحل الدراسية</a></li>
+                <li><a href="{{route('grade.index')}}">قائمة المراحل الدراسية</a></li>
             </ul>
         </li>
         <!-- menu item calendar-->
@@ -39,7 +32,7 @@
                 <div class="clearfix"></div>
             </a>
             <ul id="chart" class="collapse" data-parent="#sidebarnav">
-                <li> <a href="{{ route('section.index') }}">الاقسام الدراسة</a> </li>
+                <li> <a href="{{route('section.index')}}">الاقسام الدراسة</a> </li>
             </ul>
         </li>
 
@@ -175,26 +168,10 @@
             </ul>
         </li>
 
-
         <!-- Settings-->
-
         <li>
             <a href="{{route('setting.index')}}"><i class="ti-panel"></i><span class="right-nav-text">الاعدادات</span>
             </a>
-        </li>
-
-        <!-- Users-->
-        <li>
-            <a href="javascript:void(0);" data-toggle="collapse" data-target="#Users-icon">
-                <div class="pull-left"><i class="fas fa-users"></i><span class="right-nav-text">المستخدمين</span></div>
-                <div class="pull-right"><i class="ti-plus"></i></div>
-                <div class="clearfix"></div>
-            </a>
-            <ul id="Users-icon" class="collapse" data-parent="#sidebarnav">
-                <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                <li> <a href="themify-icons.html">Themify icons</a> </li>
-                <li> <a href="weather-icon.html">Weather icons</a> </li>
-            </ul>
         </li>
 
     </ul>

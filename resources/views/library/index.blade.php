@@ -20,8 +20,13 @@
                     <div class="col-xl-12 mb-30">
                         <div class="card card-statistics h-100">
                             <div class="card-body">
-                                <a href="{{route('library.create')}}" class="btn btn-success btn-sm" role="button"
-                                   aria-pressed="true">اضافة كتاب جديد</a><br><br>
+
+                                @if(auth()->guard('web')->check() || auth()->guard('teacher')->check())
+                                    <a href="{{ route('library.create') }}" class="btn btn-success btn-sm" role="button"
+                                       aria-pressed="true">اضافة كتاب جديد</a>
+                                @endif
+
+                                <br><br>
                                 <div class="table-responsive">
                                     <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
                                            data-page-length="50"
@@ -34,7 +39,9 @@
                                             <th>المرحلة الدراسية</th>
                                             <th>الصف الدراسي</th>
                                             <th>القسم</th>
+                                            @if(auth()->guard('web')->check() || auth()->guard('teacher')->check())
                                             <th>العمليات</th>
+                                            @endif
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -46,11 +53,13 @@
                                                 <td>{{$book->grade->name}}</td>
                                                 <td>{{$book->classroom->name}}</td>
                                                 <td>{{$book->section->name}}</td>
+                                                @if(auth()->guard('web')->check() || auth()->guard('teacher')->check())
                                                 <td>
                                                     <a href="{{route('downloadAttachment',$book->file_name)}}" title="تحميل الكتاب" class="btn btn-warning btn-sm" role="button" aria-pressed="true"><i class="fas fa-download"></i></a>
                                                     <a href="{{route('library.edit',$book->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
                                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_book{{ $book->id }}" title="حذف"><i class="fa fa-trash"></i></button>
                                                 </td>
+                                                @endif
                                             </tr>
 
                                             <div class="modal fade" id="delete_book{{$book->id}}" tabindex="-1"

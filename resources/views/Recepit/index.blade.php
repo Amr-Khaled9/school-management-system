@@ -37,7 +37,7 @@
                                         @foreach($receipt_students as $receipt_student)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{$receipt_student->student->name_ar}}</td>
+                                                <td>{{$receipt_student->student->name}}</td>
                                                 <td>{{ number_format($receipt_student->debit, 2) }}</td>
                                                 <td>{{$receipt_student->description}}</td>
                                                 <td>

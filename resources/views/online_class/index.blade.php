@@ -20,8 +20,11 @@
                     <div class="col-xl-12 mb-30">
                         <div class="card card-statistics h-100">
                             <div class="card-body">
+                                @if(auth()->guard('web')->check() || auth()->guard('teacher')->check())
                                 <a href="{{route('online_class.create')}}" class="btn btn-success btn-sm" role="button"
-                                   aria-pressed="true">اضافة حصة جديدة</a><br><br>
+                                   aria-pressed="true">اضافة حصة جديدة</a>
+                                @endif
+                                    <br><br>
                                 <div class="table-responsive">
                                     <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
                                            data-page-length="50"
@@ -37,7 +40,9 @@
                                             <th>تاريخ البداية</th>
                                             <th>وقت الحصة</th>
                                             <th>رابط الحصة</th>
+                                            @if(auth()->guard('web')->check() || auth()->guard('teacher')->check())
                                             <th>العمليات</th>
+                                            @endif
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -52,9 +57,11 @@
                                                 <td>{{$online_classe->start_time}}</td>
                                                 <td>{{$online_classe->duration}}</td>
                                                 <td class="text-danger"><a href="{{$online_classe->join_url}}" target="_blank">انضم الان</a></td>
+                                                @if(auth()->guard('web')->check() || auth()->guard('teacher')->check())
                                                 <td>
                                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_receipt{{$online_classe->meeting_id}}" ><i class="fa fa-trash"></i></button>
                                                 </td>
+                                                @endif
                                             </tr>
                                             <!-- Deleted inFormation Student -->
                                             <div class="modal fade" id="Delete_receipt{{$online_classe->meeting_id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

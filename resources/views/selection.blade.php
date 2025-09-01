@@ -26,7 +26,7 @@
 <div class="wrapper">
 
     <section class="height-100vh d-flex align-items-center page-section-ptb login"
-             style="background-image: url('{{ asset('assets/images/sativa.png')}}');">
+             >
         <div class="container">
             <div class="row justify-content-center no-gutters vertical-align">
 

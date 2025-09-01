@@ -1,0 +1,90 @@
+  .btn-primary,
+.btn-secondary,
+.btn-success,
+.dt-button,
+ .button x-small,
+ .acd-heading,
+
+ .table  table-hover table-sm table-bordered p-0,
+  .dataTables_wrapper .dataTables_paginate .paginate_button {
+    background-color: #0d1b2a !important;
+    border-color: #0d1b2a !important;
+    color: #ffffff !important;
+    border-radius: 4px;
+}
+
+/* hover */
+.btn:hover,
+.dt-button:hover,
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background-color: #112f46 !important;
+    border-color: #112f46 !important;
+    color: #ffffff !important;
+}
+
+
+/* أزرار Previous / Next / Pagination */
+.dataTables_wrapper .dataTables_paginate .page-item .page-link {
+    background-color: #0d1b2a !important;
+    color: #ffffff !important;
+    border: 1px solid #0d1b2a !important;
+    border-radius: 4px !important;
+}
+
+/* عند المرور */
+.dataTables_wrapper .dataTables_paginate .page-item .page-link:hover {
+    background-color: #112f46 !important;
+    color: #ffffff !important;
+    border: 1px solid #112f46 !important;
+}
+
+ .dataTables_wrapper .dataTables_paginate .page-item.active .page-link {
+    background-color: #0d1b2a !important;
+    color: #ffffff !important;
+    border: 1px solid #0d1b2a !important;
+}
+ .nav-tabs .nav-link {
+    background-color: #0d1b2a !important;
+    color: #ffffff !important;
+    border-radius: 4px;
+    margin: 2px;
+    border: 1px solid #0d1b2a !important;
+}
+
+
+.nav-tabs .nav-link:hover {
+    background-color: #112f46 !important;
+    color: #ffffff !important;
+    border: 1px solid #112f46 !important;
+}
+
+ .nav-tabs .nav-link.active {
+    background-color: #112f46 !important;
+    color: #ffffff !important;
+    border: 1px solid #112f46 !important;
+}
+  /* الخلفية الخاصة بالترحيب */
+  .login-fancy-bg {
+      background-color: #0d1b2a !important;
+      background-image: none !important;
+  }
+
+  /* زرار الدخول */
+  .button {
+      background-color: #0d1b2a !important;
+      border: none;
+      color: #fff !important;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: 0.3s;
+  }
+  .button:hover {
+      background-color: #1b263b !important;
+  }
+
+  /* لينك نسيت كلمة المرور */
+  .remember-checkbox a {
+      color: #0d1b2a !important;
+   }
+
+

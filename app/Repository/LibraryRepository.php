@@ -13,7 +13,10 @@ class LibraryRepository implements LibraryRepositoryInterface
         $book->grade_id = $request->Grade_id;
         $book->classroom_id = $request->Classroom_id;
         $book->section_id = $request->section_id;
-        $book->teacher_id = 1;
+
+
+            $book->teacher_id = auth()->guard('teacher')->user()->id;
+
         $book->file_name = $request->file('file_name')->getClientOriginalName();
         $book->save();
         $this->uploadPDF($request, 'file_name');
@@ -36,8 +39,13 @@ class LibraryRepository implements LibraryRepositoryInterface
         $book->grade_id = $request->Grade_id;
         $book->classroom_id = $request->Classroom_id;
         $book->section_id = $request->section_id;
-        $book->teacher_id = 1;
-        $book->save();
+        if (auth()->guard('web')->check()) {
+            // لو الأدمن هو اللي مسجل دخول
+            $book->teacher_id = auth()->guard('web')->user()->id;
+        } elseif (auth()->guard('teacher')->check()) {
+            // لو المعلم هو اللي مسجل دخول
+            $book->teacher_id = auth()->guard('teacher')->user()->id;
+        }        $book->save();
     }
     public function delete($request)
     {

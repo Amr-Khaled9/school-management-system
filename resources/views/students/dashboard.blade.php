@@ -39,7 +39,7 @@ preloader -->
         <div class="page-title" >
             <div class="row">
                 <div class="col-sm-6" >
-                    <h4 class="mb-0" style="font-family: 'Cairo', sans-serif">مرحبا بك : {{auth()->user()->name}}</h4>
+                    <h4 class="mb-0" style="font-family: 'Cairo', sans-serif">لوحة تحكم الطالب : {{auth()->user()->name}}</h4>
                 </div><br><br>
                 <div class="col-sm-6">
                     <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right">
@@ -47,6 +47,36 @@ preloader -->
                 </div>
             </div>
         </div>
+        @php
+            use App\Models\Student;
+            $son =  auth()->guard('student')->user() @endphp
+        <div class="d-flex justify-content-center mt-4">
+            <div class="col-md-6 col-lg-4 col-xl-3">
+                <a href="">
+                    <div class="card text-black shadow-sm" style="border-radius: 12px;">
+                        <img src="{{URL::asset('assets/images/my_son.png')}}" class="card-img-top" style="max-height:150px; object-fit:contain;"/>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <h5 style="font-family: 'Cairo', sans-serif" class="card-title">{{$son->name}}</h5>
+                                <p class="text-muted mb-4">معلومات الطالب</p>
+                            </div>
+                            <div>
+                                <div class="d-flex justify-content-between">
+                                    <span>المرحلة</span><span>{{$son->grade->name}}</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span>الصف</span><span>{{$son->classroom->name}}</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span>القسم</span><span>{{$son->section->name}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <br>
         <div class="calendar-main mb-30">
             <livewire:calendar  />
         </div>

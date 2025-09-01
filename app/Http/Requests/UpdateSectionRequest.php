@@ -25,8 +25,7 @@ class UpdateSectionRequest extends FormRequest
         return [
             'name' => [
                 'required',
-                Rule::unique('sections', 'name')->ignore($this->route('section')), 
-            ],
+             ],
             'grade_id' => 'required',
             'classroom_id' => 'required',
         ];

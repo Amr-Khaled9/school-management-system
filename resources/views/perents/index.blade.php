@@ -37,7 +37,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($Students as $student)
+                                        @foreach($students as $student)
                                             <tr>
                                                 <td>{{ $loop->index+1 }}</td>
                                                 <td>{{$student->name}}</td>

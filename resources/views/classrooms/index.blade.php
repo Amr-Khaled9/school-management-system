@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('css')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta/dist/css/bootstrap-select.min.css">
-    
+
 @section('title')
     الفصول الدراسية
 @stop
@@ -38,10 +38,10 @@
     <div class="col-xl-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-                <button type="button" class="button x-small" data-toggle="modal" data-target="#exampleModal">
+                <button type="button" class="btn btn-success btn-sm" role="button" data-toggle="modal" data-target="#exampleModal">
                     اضافة صف
                 </button>
-                <button type="button" class="button x-small" id="btn_delete_all">
+                <button type="button" class="btn btn-success btn-sm" role="button" id="btn_delete_all">
                     حذف الصفوف المختارة
                 </button>
 
@@ -50,7 +50,7 @@
                 <form action="{{ route('filter_class') }}" method="POST">
                     @csrf
                     <label for="grade_id" class="mb-2" style="font-weight: bold; color: #155724;">
-                        
+
                     </label>
 
                     <select class="selectpicker" data-style="btn-success" name="grade_id" id="grade_id" required
@@ -101,6 +101,10 @@
                         </tbody>
                         <tfoot>
                             <tr>
+                                <th>
+                                    <input name="select_all" id="example-select-all" type="checkbox"
+                                           onclick="toggleSelectAll(this, 'box1')" />
+                                </th>
                                 <th>#</th>
                                 <th>اسم الصف</th>
                                 <th>اسم االمرحلة</th>
@@ -312,8 +316,8 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary"
-                        data-dismiss="modal">{{ trans('My_Classes_trans.Close') }}</button>
-                    <button type="submit" class="btn btn-danger">{{ trans('My_Classes_trans.submit') }}</button>
+                        data-dismiss="modal">الغاء</button>
+                    <button type="submit" class="btn btn-danger">تاكيد</button>
                 </div>
             </form>
         </div>

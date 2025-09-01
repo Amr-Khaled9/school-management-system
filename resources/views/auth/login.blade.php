@@ -8,7 +8,7 @@
     <meta name="description" content="Webmin - Bootstrap 4 & Angular 5 Admin Dashboard Template" />
     <meta name="author" content="potenzaglobalsolutions.com" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>برنامج مورا سوفت لادارة المدارس</title>
+    <title>School</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.ico" />
@@ -19,6 +19,7 @@
 
     <!-- css -->
     <link href="{{ URL::asset('assets/css/rtl.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/css/custom.css') }}" rel="stylesheet">
 
 </head>
 
@@ -39,7 +40,7 @@
 
                 <!-- Left Image / Info -->
                 <div class="col-lg-4 col-md-6 login-fancy-bg bg"
-                     style="background-image: url(images/login-inner-bg.jpg);">
+                     style="background-color:#0d1b2a; background-image:none;">
                     <div class="login-fancy">
                         <h2 class="text-white mb-20">مرحبا بك!</h2>
                         <p class="mb-20 text-white">
@@ -52,10 +53,22 @@
                     </div>
                 </div>
 
+
+
                 <!-- Login Form -->
                 <div class="col-lg-4 col-md-6 bg-white">
                     <div class="login-fancy pb-40 clearfix">
-                        <h3 class="mb-30">تسجيل الدخول {{ ucfirst($type) }}</h3>
+                        @php
+                            $types = [
+                                'web'   => 'الادمن',
+                                'student' => 'الطالب',
+                                'teacher' => 'المعلم',
+                                'parent'  => 'ولي الامر',
+                            ];
+                        @endphp
+
+                        <h3 class="mb-30">تسجيل دخول {{ $types[$type] ?? $type }}</h3>
+
 
                         <!-- عرض الأخطاء -->
                         @if($errors->any())
@@ -81,7 +94,7 @@
                             </div>
 
                             <div class="section-field mb-20">
-                                <label class="mb-10" for="password">كلمة المرور*</label>
+                                <label style="color:  #0d1b2a" class="mb-10" for="password">كلمة المرور*</label>
                                 <input id="password" type="password"
                                        class="form-control @error('password') is-invalid @enderror" name="password"
                                        required autocomplete="current-password">

@@ -14981,7 +14981,7 @@ button.toast-close-button {
 
 /*# sourceMappingURL=bootstrap-datepicker.css.map */
 /*
-    Common 
+    Common
 */
 .wizard,
 .tabcontrol {
@@ -20058,7 +20058,7 @@ ul.list-unstyled li {
 
 /*header*/
 .admin-header {
-  background: #ffffff;
+  background: #0d1b2a;
   -webkit-box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.1);
   box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.1); }
@@ -20083,13 +20083,13 @@ ul.list-unstyled li {
   color: white; }
   .admin-header.navbar ul.navbar-nav .nav-link i {
     font-size: 19px;
-    color: #6c757d; }
+    color: #ffffff; }
 
 .admin-header.navbar .navbar-brand-wrapper {
   transition: width .5s ease-in-out;
   width: 230px; }
   .admin-header.navbar .navbar-brand-wrapper .navbar-brand {
-    color: #5a5f61;
+    color: #0d1b2a;
     font-size: 2rem;
     margin-right: 0;
     margin-left: 20px; }
@@ -20102,8 +20102,10 @@ ul.list-unstyled li {
 .admin-header .navbar-brand {
   height: auto;
   padding: 9px 0; }
-  .admin-header .navbar-brand img {
-    height: 30px; }
+.admin-header .navbar-brand img {
+    height: 60px;
+    width: auto;
+ }
 
 .admin-header .search .search-btn {
   color: #6c757d;
@@ -20389,7 +20391,8 @@ ul.list-unstyled li {
   .side-menu-fixed .side-menu-bg {
     height: 100%;
     width: 100%;
-    background: #282a39; }
+      background:  #0d1b2a !important;
+ }
   .side-menu-fixed .side-menu {
     border: none;
     height: auto;
@@ -20397,7 +20400,7 @@ ul.list-unstyled li {
     position: relative;
     border-radius: 0;
     margin: 0;
-    background-color: #282a39;
+      background: #0d1b2a !important;
     backface-visibility: hidden;
     padding-top: 20px; }
     .side-menu-fixed .side-menu li {

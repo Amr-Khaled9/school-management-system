@@ -40,7 +40,7 @@
                                         @foreach($Fee_invoices as $Fee_invoice)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{$Fee_invoice->student->name_ar}}</td>
+                                                <td>{{$Fee_invoice->student->name}}</td>
                                                 <td>{{$Fee_invoice->fee->title_ar}}</td>
                                                 <td>{{ number_format($Fee_invoice->amount, 2) }}</td>
                                                 <td>{{$Fee_invoice->grade->name}}</td>

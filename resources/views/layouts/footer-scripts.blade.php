@@ -28,6 +28,7 @@
 <script src="{{ URL::asset('assets/js/lobilist.js') }}"></script>
 <!-- custom -->
 <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
     $(document).ready(function () {
@@ -84,5 +85,32 @@
 
 
 </script>
+<script>
+    // Chart 1 - Bar
+    const ctx1 = document.getElementById('studentsChart');
+    new Chart(ctx1, {
+        type: 'bar',
+        data: {
+            labels: ['رياضيات', 'علوم', 'لغة عربية', 'انجليزي'],
+            datasets: [{
+                label: 'عدد الطلاب الناجحين',
+                data: [25, 30, 20, 35],
+                backgroundColor: '#0d1b2a'
+            }]
+        }
+    });
 
+    // Chart 2 - Pie
+    const ctx2 = document.getElementById('attendanceChart');
+    new Chart(ctx2, {
+        type: 'pie',
+        data: {
+            labels: ['حضور', 'غياب'],
+            datasets: [{
+                data: [80, 20],
+                backgroundColor: ['#0d1b2a', '#778da9']
+            }]
+        }
+    });
+</script>
 

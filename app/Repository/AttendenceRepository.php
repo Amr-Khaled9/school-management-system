@@ -21,7 +21,10 @@ class AttendenceRepository implements AttendenceRepositoryInterface
                     'grade_id' => $request->grade_id,
                     'classroom_id' => $request->classroom_id,
                     'section_id' => $request->section_id,
-                    'teacher_id' => 1,
+
+                        // لو المعلم هو اللي مسجل دخول
+                    'teacher_id' => auth()->guard('teacher')->user()->id,
+
                     'attendence_date' => date('Y-m-d'),
                     'attendence_status' => $status,
                 ]);

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 
 <head>
     <title>لوحة التحكم</title>
@@ -38,7 +38,7 @@ preloader -->
         <div class="page-title">
             <div class="row">
                 <div class="col-sm-6">
-                    <h4 class="mb-0"> لوحة تحكم الادمن</h4>
+                    <h4 class="mb-0">  لوحة تحكم الادمن :  {{auth()->guard('web')->user()->name}}</h4>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right">
@@ -59,7 +59,8 @@ preloader -->
                             </div>
                             <div class="float-right text-right">
                                 <p class="card-text text-dark">عدد الطلاب</p>
-                                <h4>{{\App\Models\Student::count()}}</h4>
+{{--                                {{\App\Models\Student::count()}} --}}
+                                <h4>150</h4>
                             </div>
                         </div>
                         <p class="text-muted pt-3 mb-0 mt-2 border-top">
@@ -193,7 +194,7 @@ preloader -->
                                             @forelse(\App\Models\Student::latest()->take(5)->get() as $student)
                                                 <tr>
                                                     <td>{{$loop->iteration}}</td>
-                                                    <td>{{$student->name_ar}}</td>
+                                                    <td>{{$student->name }}</td>
                                                     <td>{{$student->email}}</td>
                                                     <td>{{$student->gender}}</td>
                                                     <td>{{$student->grade->name}}</td>
@@ -260,8 +261,8 @@ preloader -->
                                             @forelse(\App\Models\MyPerent::latest()->take(5)->get() as $parent)
                                                 <tr>
                                                     <td>{{$loop->iteration}}</td>
-                                                    <td>{{$parent->name_father}}</td>
-                                                    <td>{{$parent->Email}}</td>
+                                                    <td>{{$parent->name}}</td>
+                                                    <td>{{$parent->email}}</td>
                                                     <td>{{$parent->national_id_father}}</td>
                                                     <td>{{$parent->phone_father}}</td>
                                                     <td class="text-success">{{$parent->created_at}}</td>
@@ -295,7 +296,7 @@ preloader -->
                                                 <tr>
                                                     <td>{{$loop->iteration}}</td>
                                                     <td>{{$section->invoice_date}}</td>
-                                                    <td>{{$section->student->name_ar}}</td>
+                                                    <td>{{$section->student->name}}</td>
                                                     <td>{{$section->grade->name}}</td>
                                                     <td>{{$section->classroom->name}}</td>
                                                      <td>{{$section->fee->title_ar}}</td>
